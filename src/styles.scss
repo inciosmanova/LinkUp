@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap");
+* {
+  font-family: "Open Sans", sans-serif;
+}
+//login
+.container {
+  max-width: 1800px !important;
+}
+.btn {
+  button {
+    background: #353e47;
+    height: 40px;
+    width: 120px;
+    left: 1210px;
+    top: 16px;
+    border-radius: 6px;
+    // font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    // letter-spacing: 0em;
+    color: #fff;
+  }
+}

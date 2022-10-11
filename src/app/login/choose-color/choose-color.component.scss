@@ -1,0 +1,71 @@
+.headText {
+  padding-top: 10px;
+  width: 90%;
+  margin: auto;
+  pre {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #626262;
+  }
+}
+.all-main {
+  padding-top: 50px;
+
+  .chooseColorDiv {
+    .ChooseColor {
+      font-size: 35px;
+      font-weight: 400;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #000000;
+    }
+  }
+  .allColorBox {
+    padding: 40px 0px;
+    button {
+      background-color: transparent;
+      border: none;
+      // padding:0px 30px;
+    }
+  }
+  .alertBox {
+    .alertP {
+      padding-top: 10px;
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #626262;
+      .bText {
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
+      .alertText {
+        color: #f00f10;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .colorBtn {
+    width: 33.3% !important;
+  }
+}
