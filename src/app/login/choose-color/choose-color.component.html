@@ -17,10 +17,13 @@
           <img src="../../../assets/login/blackLine.svg" alt="">
         </div>
         <div class="allColorBox row justify-content-center">
-          <div class="col-2 colorBtn p-0 d-flex justify-content-end"><img src="../../../assets/login/Blue.svg" alt="">
+          <div    [className]="blue ? 'col-2 colorBtn p-0 d-flex justify-content-end' : 'none'">
+            <img [className]="blue=='blue' ? 'block' : ''" (click)="ClickBlue()"  src="../../../assets/login/Blue.svg" alt="">
           </div>
-          <div class="col-2 colorBtn p-0"><img src="../../../assets/login/Red.svg" alt=""></div>
-          <div class="col-2 colorBtn p-0 d-flex justify-content-start"><img src="../../../assets/login/Green.svg"
+          <div   [className]="red ? 'col-2 colorBtn p-0 d-flex justify-content-center' : 'none'" >
+            <img [className]="red=='red' ? 'block' : ''" (click)="ClickRed()" src="../../../assets/login/Red.svg" alt=""></div>
+          <div  [className]="green ? 'col-2 colorBtn p-0 d-flex justify-content-start' : 'none'">
+            <img [className]="green=='green' ? 'block' : ''" (click)="ClickGreen()"  src="../../../assets/login/Green.svg"
               alt=""></div>
         </div>
         <div class="alertBox pt-1">
@@ -41,12 +44,13 @@
       </div>
     </section>
     <!-- //loginpage -->
-    <section id="login">
-      <app-login></app-login>
-    </section>
+
   </div>
 
 </main>
+<section id="login" class="login" #login>
+  <app-login-page></app-login-page>
+</section>
 <footer>
   <app-footer></app-footer>
 </footer>

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: "", redirectTo: 'choose-color', pathMatch: 'full' },
   { path: "choose-color", component: ChooseColorComponent },
+  { path: "choose-color#login", component: ChooseColorComponent },
 ];
 
 @NgModule({

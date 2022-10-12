@@ -1,3 +1,5 @@
+import { SendCodeComponent } from './../send-code/send-code.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
-
+  openDialog() {
+    this.dialog.open(SendCodeComponent,{
+      width:'auto'
+    });
+  }
 }
+

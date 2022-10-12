@@ -1,3 +1,15 @@
+header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  transition: 0.2s;
+  z-index: 3;
+}
+main{
+  margin: 100px 0;
+}
 .headText {
   padding-top: 10px;
   width: 90%;
@@ -27,9 +39,8 @@
   }
   .allColorBox {
     padding: 40px 0px;
-    button {
-      background-color: transparent;
-      border: none;
+    img {
+ cursor: pointer;
       // padding:0px 30px;
     }
   }
@@ -62,6 +73,59 @@
       }
     }
   }
+}
+.login{
+  background-color: #66BFBF;
+  margin-top: 15%;
+  padding-bottom: 2%;
+}
+.blockBlue{
+    flex: 0 0 auto;
+    width: 16.66666667%;
+    padding: 0;
+    display: flex;
+    justify-content: end;
+  }
+// }
+// .blockRed{
+//   flex: 0 0 auto;
+//   width: 16.66666667%;
+//   padding: 0;
+//   display: flex;
+//   justify-content: end;
+// }
+// .blockBlue{
+//   flex: 0 0 auto;
+//   width: 16.66666667%;
+//   padding: 0;
+//   display: flex;
+// }
+// .blockGreen{
+//   flex: 0 0 auto;
+//   width: 16.66666667%;
+//   padding: 0;
+//   display: flex;
+//   justify-content: start;
+
+
+// }
+.colorBtn{
+  transition: all linear 0.5s;
+  img{
+  transition: all linear 0.5s;
+  }
+  .block{
+    transform: scale(1.5);
+    transition: all linear 0.5s;
+    justify-content: center;
+    margin: auto;
+  }
+}
+
+
+.none{
+  display: none;
+  transition: all linear 0.5s;
 }
 
 @media only screen and (max-width: 850px) {

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,6 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChooseColorComponent } from './choose-color/choose-color.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { SendCodeComponent } from './send-code/send-code.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -14,11 +19,16 @@ import { LoginPageComponent } from './login-page/login-page.component';
     HeaderComponent,
     FooterComponent,
     ChooseColorComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SendCodeComponent
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
+    RouterModule
   ]
 })
 export class LoginModule { }
