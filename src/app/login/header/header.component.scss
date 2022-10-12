@@ -16,14 +16,44 @@
   margin-top: 22px;
   width: 100%;
   height: 7px;
-  border-radius: 0px;
+  // border-radius: 0px;
+  // position: relative;
   background: linear-gradient(90deg, #ff4949 0%, #0096ff 48.96%, #3ccf4e 100%);
-  box-shadow: 0px 1px 2px 0px #000000bf inset;
+  // box-shadow: 0px 1px 2px 0px #000000bf inset;
+  // animation-name: example;
+  // animation-duration: 6s;
+  // animation-iteration-count: infinite;
+  background-size: 400% 400%;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 }
-.musicbox{
-  margin-top: -15px;
-  padding-right:110px;
 
+@keyframes example {
+  0% {
+    background-position: 0% 10%;
+  }
+  50% {
+    background-position: 100% 10%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.musicbox {
+  margin-top: -15px;
+  padding-right: 110px;
+  img {
+    cursor: pointer;
+    transition: all linear 0.5s;
+  }
+}
+.Gif {
+  width: 11%;
+  height: 58px;
+  border-radius: 100%;
 }
 @media only screen and (max-width: 850px) {
   .musicbox {

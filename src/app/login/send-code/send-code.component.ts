@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-send-code',
@@ -9,11 +10,16 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class SendCodeComponent implements OnInit {
 
   // constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
-
+  constructor(private router: Router,
+    public dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
   }
-  CloseDialog(){
+  SendSms() {
+    this.router.navigate(['/choose-color/forgetPassword'])
+    this.dialogRef.close()
+  }
+  CloseDialog() {
 
   }
 }

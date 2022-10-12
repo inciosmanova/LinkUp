@@ -1,56 +1,51 @@
-<header>
-  <app-header></app-header>
-</header>
-<main>
-  <div class="container">
-    <section id="color">
-      <div class="headText">
-        <pre>
+<div class="container">
+  <section id="color">
+    <div class="headText">
+      <pre>
            Hər gün yeni bir başlanğıcdır.
                               Dərin bir nəfəs al,
                 gülümsə və yenidən başla.
         </pre>
+    </div>
+    <div class="all-main text-center">
+      <div class="chooseColorDiv">
+        <h1 class="ChooseColor">RƏNGİNİ SEÇ</h1>
+        <img src="../../../assets/login/blackLine.svg" alt="">
       </div>
-      <div class="all-main text-center">
-        <div class="chooseColorDiv">
-          <h1 class="ChooseColor">RƏNGİNİ SEÇ</h1>
-          <img src="../../../assets/login/blackLine.svg" alt="">
+      <div class="allColorBox row justify-content-center">
+        <div [className]="blue ? 'col-2 colorBtn p-0 d-flex justify-content-end' : 'none'">
+          <img [className]="blue=='blue' ? 'block' : ''" (click)="ClickBlue()" src="../../../assets/login/Blue.svg"
+            alt="">
         </div>
-        <div class="allColorBox row justify-content-center">
-          <div    [className]="blue ? 'col-2 colorBtn p-0 d-flex justify-content-end' : 'none'">
-            <img [className]="blue=='blue' ? 'block' : ''" (click)="ClickBlue()"  src="../../../assets/login/Blue.svg" alt="">
+        <div [className]="red ? 'col-2 colorBtn p-0 d-flex justify-content-center' : 'none'">
+          <img [className]="red=='red' ? 'block' : ''" (click)="ClickRed()" src="../../../assets/login/Red.svg" alt="">
+        </div>
+        <div [className]="green ? 'col-2 colorBtn p-0 d-flex justify-content-start' : 'none'">
+          <img [className]="green=='green' ? 'block' : ''" (click)="ClickGreen()" src="../../../assets/login/Green.svg"
+            alt="">
+        </div>
+      </div>
+      <div class="alertBox pt-1">
+        <div class="row">
+          <div class="col-4 d-flex justify-content-end">
+            <img src="../../../assets/login/AlertMan.svg" alt="">
           </div>
-          <div   [className]="red ? 'col-2 colorBtn p-0 d-flex justify-content-center' : 'none'" >
-            <img [className]="red=='red' ? 'block' : ''" (click)="ClickRed()" src="../../../assets/login/Red.svg" alt=""></div>
-          <div  [className]="green ? 'col-2 colorBtn p-0 d-flex justify-content-start' : 'none'">
-            <img [className]="green=='green' ? 'block' : ''" (click)="ClickGreen()"  src="../../../assets/login/Green.svg"
-              alt=""></div>
-        </div>
-        <div class="alertBox pt-1">
-          <div class="row">
-            <div class="col-4 d-flex justify-content-end">
-              <img src="../../../assets/login/AlertMan.svg" alt="">
-            </div>
-            <div class="col-8">
-              <p class="alertP text-start"><span class="bText">~Diqqət:</span> Bəzi seçimlər sonradan dəyiştirilmir !
-                <span class="alertText">Xahiş olunur rənginizi seçəsiniz !</span>
-              </p>
-            </div>
+          <div class="col-8">
+            <p class="alertP text-start"><span class="bText">~Diqqət:</span> Bəzi seçimlər sonradan dəyiştirilmir !
+              <span class="alertText">Xahiş olunur rənginizi seçəsiniz !</span>
+            </p>
           </div>
         </div>
       </div>
-      <div class="btn d-flex justify-content-center">
-        <button>I’am ready</button>
-      </div>
-    </section>
-    <!-- //loginpage -->
+    </div>
+    <div class="btn d-flex justify-content-center">
+      <button routerLink="/register">I’am ready</button>
+    </div>
+  </section>
+  <!-- //loginpage -->
 
-  </div>
+</div>
 
-</main>
 <section id="login" class="login" #login>
   <app-login-page></app-login-page>
 </section>
-<footer>
-  <app-footer></app-footer>
-</footer>

@@ -11,6 +11,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { SendCodeComponent } from './send-code/send-code.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     FooterComponent,
     ChooseColorComponent,
     LoginPageComponent,
-    SendCodeComponent
+    SendCodeComponent,
+    ForgetPasswordComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
