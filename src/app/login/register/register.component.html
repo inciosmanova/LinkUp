@@ -1,6 +1,6 @@
-<div class="container">
+<div class="">
   <div class="mycontainer">
-    <div class="row">
+    <div class="row pt-5">
       <div class="left col-lg-8 ">
         <div class="row">
           <div class="col-lg-6 row">
@@ -51,7 +51,7 @@
                 <input type="password" class="form-control" id="Repeatpassword" placeholder="Repeat password">
                 <label for="Repeatpassword">Repeat password</label>
               </form>
-
+              <p class="pwd-text text-danger">Password should be min 6 simbol , letter and number</p>
             </div>
 
           </div>
@@ -74,12 +74,15 @@
 
             <div class="col-9 row">
               <div class="row gender justify-content-center align-items-center ">
-                <button class="col-lg-6 mx-1">
-                  <img src="../../../assets/login/man.svg" alt="">
-                </button>
-                <button class="col-lg-6 mx-1">
-                  <img src="../../../assets/login/female.svg" alt="">
-                </button>
+
+                <ul class="d-flex justify-content-center">
+                  <li><input type="radio" id="cb1" name="gender" value="gender" />
+                    <label for="cb1"><img src="../../../assets/login/man.svg" /></label>
+                  </li>
+                  <li><input type="radio" id="cb2" name="gender" value="gender" />
+                    <label for="cb2"><img src="../../../assets/login/female.svg" /></label>
+                  </li>
+                </ul>
               </div>
 
 
@@ -95,7 +98,7 @@
               <img src="../../../assets/login/AlertMan.svg" alt="">
             </div>
             <div class="col-8">
-              <p class="alertP text-start"><span class="bText">~Diqqət:</span>
+              <p class="alertP text-start "><span class="bText">~Diqqət:</span>
                 Xahiş olunur xanaları düzgün və tam doldurasınız !
               </p>
             </div>
@@ -106,7 +109,7 @@
         <div class="col-12 text-right d-flex justify-content-end">
           <div class="btn">
             <button>Done</button>
-            <p class="alertP text-start">
+            <p class="alertP text-start text-danger">
               Xahiş olunur xanaları düzgün və tam doldurasınız !
             </p>
           </div>
@@ -115,8 +118,17 @@
 
 
       </div>
-      <div class="right col-lg-8">
-
+      <div class="right col-lg-4">
+        <div class="cardBox">
+          <img class="cardImg" src="" alt="">
+          <div class="textbox">
+            <span class="t t1">Qeydiyyatdan</span>
+            <span class="t t2">keçərək</span>
+            <span class="t t3">Platformun</span>
+            <span class="t t2">bütün özəlliklərindən</span>
+            <span class="t t3">yararlanın!</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
