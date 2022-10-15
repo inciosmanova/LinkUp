@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, Inject, OnInit ,Renderer2  } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, OnInit ,Renderer2  } from '@angular/core';
 
 @Component({
   selector: 'app-choose-color',
@@ -35,5 +35,25 @@ export class ChooseColorComponent implements OnInit {
     this.blue=false
     this.green='green'
 
+  }
+
+
+
+  // window.addEventListener("scroll", reveal);
+
+  @HostListener('window:scroll', ['$event'])    reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
   }
 }

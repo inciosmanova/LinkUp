@@ -18,5 +18,6 @@ export class LoginPageComponent implements OnInit {
       width:'auto'
     });
   }
+
 }
 

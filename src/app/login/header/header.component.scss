@@ -51,12 +51,16 @@
   }
 }
 .Gif {
-  width: 10%;
   height: 60px;
   border-radius: 100%;
 }
 @media only screen and (max-width: 850px) {
   .musicbox {
     justify-content: start !important;
+  }
+  .btn{
+    button{
+      width: 60px;
+    }
   }
 }

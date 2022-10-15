@@ -125,9 +125,26 @@ main {
   display: none;
   transition: all linear 0.5s;
 }
+.reveal {
+  position: relative;
+  opacity: 0;
+  transition: all linear 0.5s;
 
+}
+
+.reveal.active {
+  opacity: 1;
+
+}
 @media only screen and (max-width: 850px) {
   .colorBtn {
     width: 33.3% !important;
+  }
+
+}
+@media only screen and (max-width: 791px) {
+
+  #color{
+    padding: 15% 0;
   }
 }

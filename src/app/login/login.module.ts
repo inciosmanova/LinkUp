@@ -13,6 +13,8 @@ import { SendCodeComponent } from './send-code/send-code.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterCodeComponent } from './register/register-code/register-code.component';
+import { CounterComponent } from './counter/counter.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { RegisterComponent } from './register/register.component';
     LoginPageComponent,
     SendCodeComponent,
     ForgetPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterCodeComponent,
+    CounterComponent
   ],
   imports: [
     CommonModule,
