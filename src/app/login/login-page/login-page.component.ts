@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(SendCodeComponent,{
-      width:'auto'
+      width:'350px'
     });
   }
 

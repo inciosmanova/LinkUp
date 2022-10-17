@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import gsap, { Quart } from 'gsap';
 
 @Component({
   selector: 'app-counter',
@@ -6,52 +7,104 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./counter.component.scss']
 })
 export class CounterComponent implements OnInit {
-  months = [
-    'Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec',
-  ];
-  cDateMillisecs: any;
-  tDateMillisecs: any;
-  year: number = 2023;
-  month: number = 6;
-  currentDate: any;
-  targetDate: any;
-  difference: any;
-  seconds: any;
-  minutes: any;
-  hours: any;
-  days: any;
-  day: number = 31;
-  constructor() { }
 
   ngOnInit(): void {
-    this.myTimer();
+   this.myTimer()
 
   }
   myTimer() {
-    this.currentDate = new Date();
-    // this.targetDate = new Date(2023, 6, 31);
-     this.targetDate = new Date(2022, 11, 11);
-    this.cDateMillisecs = this.currentDate.getTime();
-    this.tDateMillisecs = this.targetDate.getTime();
-    this.difference = this.tDateMillisecs - this.cDateMillisecs;
-    this.seconds = Math.floor(this.difference / 1000);
-    this.minutes = Math.floor(this.seconds / 60);
-    this.hours = Math.floor(this.minutes / 60);
-    this.days = Math.floor(this.hours / 24);
+    const elDays = document.querySelector(".days");
+    const elHours = document.querySelector(".hours");
+    const elMinutes = document.querySelector(".minutes");
+    const elSeconds = document.querySelector(".seconds");
 
-    this.hours %= 24;
-    this.minutes %= 60;
-    this.seconds %= 60;
-    this.hours = this.hours < 10 ? '0' + this.hours : this.hours;
-    this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
-    this.seconds = this.seconds < 10 ? '0' + this.seconds : this.seconds;
+    let timeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0
+    };
 
-    (document.getElementById('days') as HTMLElement).innerText = this.days;
-    (document.getElementById('hours') as HTMLElement).innerText = this.hours;
-    (document.getElementById('mins')as HTMLElement).innerText = this.minutes;
-    (document.getElementById('seconds')as HTMLElement).innerText = this.seconds;
+    let totalSeconds = 0;
 
-    setInterval(this.myTimer, 1000);
-  }
+    let futureDate:any = new Date(2022, 11, 11);
+    let currentDate:any = new Date();
+    futureDate.setDate(futureDate.getDate() + 14);
+
+    function init() {
+      totalSeconds = Math.floor((futureDate-currentDate ) / 1000);
+      setTimeLeft();
+      let interval = setInterval(() => {
+        if (totalSeconds < 0) {
+          clearInterval(interval);
+        }
+        countTime();
+      }, 1000);
+    }
+
+    function countTime() {
+      if (totalSeconds > 0) {
+        --timeLeft.seconds;
+        if (timeLeft.minutes >= 0 && timeLeft.seconds < 0) {
+          timeLeft.seconds = 59;
+          --timeLeft.minutes;
+          if (timeLeft.hours >= 0 && timeLeft.minutes < 0) {
+            timeLeft.minutes = 59;
+            --timeLeft.hours;
+            if (timeLeft.days >= 0 && timeLeft.hours < 0) {
+              timeLeft.hours = 23;
+              --timeLeft.days;
+            }
+          }
+        }
+      }
+      --totalSeconds;
+      printTime();
+    }
+
+    function printTime() {
+      animateFlip(elDays, timeLeft.days);
+      animateFlip(elHours, timeLeft.hours);
+      animateFlip(elMinutes, timeLeft.minutes);
+      animateFlip(elSeconds, timeLeft.seconds);
+    }
+
+    function animateFlip(element:any, value:any) {
+      const valueInDom = element.querySelector(".bottom-back").innerText;
+      const currentValue = value < 10 ? "0" + value : "" + value;
+
+      if (valueInDom === currentValue) return;
+
+      element.querySelector(".top-back span").innerText = currentValue;
+      element.querySelector(".bottom-back span").innerText = currentValue;
+
+      gsap.to(element.querySelector(".top"), 0.7, {
+        rotationX: "-180deg",
+        transformPerspective: 300,
+        ease: Quart.easeOut,
+        onComplete: function () {
+          element.querySelector(".top").innerText = currentValue;
+          element.querySelector(".bottom").innerText = currentValue;
+          gsap.set(element.querySelector(".top"), { rotationX: 0 });
+        }
+      });
+
+      gsap.to(element.querySelector(".top-back"), 0.7, {
+        rotationX: 0,
+        transformPerspective: 300,
+        ease: Quart.easeOut,
+        clearProps: "all"
+      });
+    }
+
+    function setTimeLeft() {
+      timeLeft.days = Math.floor(totalSeconds / (60 * 60 * 24));
+      timeLeft.hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+      timeLeft.minutes = Math.floor((totalSeconds / 60) % 60);
+      timeLeft.seconds = Math.floor(totalSeconds % 60);
+    }
+
+    init();
+  };
 
 }

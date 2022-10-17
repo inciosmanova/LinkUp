@@ -1,44 +1,60 @@
-<div class=" wrapper">
-  <p class="targe-date">
-    Countdown to {{ months[month] + ' ' + day + ', ' + year }}
-  </p>
-
-  <div class="times row">
-    <div class=" col-3 mt-3 d-flex justify-content-center">
-      <div class="box">
-        <p class="time text-center" id="days"></p>
-        <p class="text-center pText">Gün</p>
-        <span class="Sleft"></span>
-        <span class="Sright"></span>
-      </div>
-    </div>
-    <div class=" col-3 mt-3  d-flex justify-content-center">
-      <div class="box">
-        <p class="time text-center" id="hours"></p>
-        <p class="text-center pText">Saat</p>
-        <span class="Sleft"></span>
-        <span class="Sright"></span>
-      </div>
-    </div>
-    <div class=" col-3 mt-3  d-flex justify-content-center">
-      <div class="box">
-        <p class="time text-center" id="mins">
-        </p>
-        <p class="text-center pText">Dəqiqə</p>
-        <span class="Sleft"></span>
-        <span class="Sright"></span>
-      </div>
-
-    </div>
-    <div class=" col-3 mt-3  d-flex justify-content-center">
-      <div class="box">
-        <p class="time text-center" id="seconds"></p>
-        <p class="text-center pText">Saniyə</p>
-        <span class="Sleft"></span>
-        <span class="Sright"></span>
-      </div>
-
-
-    </div>
-  </div>
+<div class="d-none">
+  <app-header></app-header>
 </div>
+<main class="main-content">
+	<div class="container-countdown">
+		<section class="countdown-block">
+			<span class="days time-element">
+				<span class="top">00</span>
+				<span class="top-back">
+					<span>00</span>
+				</span>
+				<span class="bottom">00</span>
+				<span class="bottom-back">
+					<span>00</span>
+				</span>
+			</span>
+			<h2 class="subtitle">Days</h2>
+		</section>
+		<section class="countdown-block">
+			<span class="hours time-element">
+				<span class="top">00</span>
+				<span class="top-back">
+					<span>00</span>
+				</span>
+				<span class="bottom">00</span>
+				<span class="bottom-back">
+					<span>00</span>
+				</span>
+			</span>
+			<h2 class="subtitle">Hours</h2>
+		</section>
+		<section class="countdown-block">
+			<span class="minutes time-element">
+				<span class="top">00</span>
+				<span class="top-back">
+					<span>00</span>
+				</span>
+				<span class="bottom">00</span>
+				<span class="bottom-back">
+					<span>00</span>
+				</span>
+			</span>
+			<h2 class="subtitle">Minutes</h2>
+		</section>
+		<section class="countdown-block" style="margin-right: 30px">
+			<span class="seconds time-element">
+				<span class="top">00</span>
+				<span class="top-back">
+					<span>00</span>
+				</span>
+				<span class="bottom">00</span>
+				<span class="bottom-back">
+					<span>00</span>
+				</span>
+			</span>
+			<h2 class="subtitle">Seconds</h2>
+		</section>
+	</div>
+
+

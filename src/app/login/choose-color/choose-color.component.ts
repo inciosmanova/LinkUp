@@ -36,7 +36,9 @@ export class ChooseColorComponent implements OnInit {
     this.green='green'
 
   }
+  ReyestrSubmit(){
 
+  }
 
 
   // window.addEventListener("scroll", reveal);

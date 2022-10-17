@@ -1,18 +1,27 @@
 @import "~bootstrap/dist/css/bootstrap.css";
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Lato:wght@100;300&family=Open+Sans:ital,wght@0,400;1,300&family=Pathway+Gothic+One&family=Poppins:ital,wght@0,400;1,300&family=Roboto:wght@100;300&family=Yeseva+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Lato:wght@100;300&family=Open+Sans:ital,wght@0,400;1,300&family=Pathway+Gothic+One&family=Poppins:ital,wght@0,400;1,300&family=Roboto:wght@100;300&family=Yeseva+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Lato:wght@100;300&family=Nova+Slim&family=Open+Sans:ital,wght@0,400;1,300&family=Pathway+Gothic+One&family=Poppins:ital,wght@0,400;1,300&family=Roboto:wght@100;300&family=Yeseva+One&display=swap");
+
 * {
   font-family: "Open Sans", sans-serif;
+      // overflow-x: hidden;
 }
 a {
   cursor: pointer;
+}
+.mat-dialog-container{
+  padding: 0!important;
+  overflow: hidden!important;
+  border-radius: 7px !important;
+
 }
 .main {
   overflow-x: hidden;
 }
 //login
 .container {
-  max-width: 1800px !important;
+  max-width: 1850px !important;
 }
 ::-webkit-scrollbar {
   opacity: 0;
@@ -39,13 +48,16 @@ a {
 }
 .btn {
   border: none;
-  button {
+ button{
+  height: 40px;
+  width: 120px;
+  left: 1210px;
+  top: 16px;
+  border-radius: 6px;
+ }
+  .dartBtn {
     background: #353e47;
-    height: 40px;
-    width: 120px;
-    left: 1210px;
-    top: 16px;
-    border-radius: 6px;
+
     // font-family: Open Sans;
     border: none;
     font-size: 16px;
@@ -53,7 +65,40 @@ a {
     line-height: 22px;
     // letter-spacing: 0em;
     color: #fff;
+    &:hover {
+      box-shadow: 2px 2px 5px 0px #00000080 inset !important;
+
+      box-shadow: -2px -2px 5px 0px #b7b4b480 inset !important;
+      background: #50565f !important;
+    }
+    &:focus {
+      color: #4ffdd3 !important;
+    }
+  }
+  .whitebtn {
+    background: #f9f9f9;
+    box-shadow: -3px -3px 5px #ffffff, -0.5px -0.5px 2px #ffffff, 0.5px 0.5px 2px rgba(0, 0, 0, 0.25),
+      3px 3px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    color: #000;
     text-decoration: none;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: rıght;
+    border: none;
+    &:hover {
+      background: #f9f9f9 !important;
+
+      box-shadow: -2px -2px 4px 0px #ffffff inset;
+
+      box-shadow: 2px 2px 4px 0px #00000080 inset;
+    }
+    &:focus {
+      color: #1092f0 !important;
+    }
   }
 }
 input,
@@ -75,6 +120,15 @@ select {
   padding: 4px 0.25rem;
   height: calc(2.5rem + 2px) !important;
 }
+select {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
 .form-control:focuss {
   box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
   outline: none;
@@ -84,8 +138,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+// .form-select{
+//   padding: 4px 0.25rem;
+// }
 /* Firefox */
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -106,8 +163,22 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
 }
+
 .form-select {
   background-position: right 0.2rem center !important;
-  padding: 0.375rem 0.25rem 0.375rem 0.25rem !important;
+  padding: 0.375rem 0.25rem 0.375rem 0.75rem;
+  // padding: 0.375rem 0.25rem 0.375rem 0.25rem !important;
+}
+.swal2-text {
+  font-family: Open Sans;
+font-size: 16px;
+font-weight: 600;
+line-height: 19px;
+letter-spacing: 0em;
+color: red;
+text-align: center;
+color: #626262;
+
 }

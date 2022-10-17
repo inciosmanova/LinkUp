@@ -1,102 +1,154 @@
-.wrapper {
-  max-width: 600px;
-  margin: 70px auto;
-  font: normal 14px sans-serif;
-  .targe-date {
-    text-align: center;
-  }
-  .description,
-  .times {
-    display: flex;
-    justify-content: space-around;
-    > p {
-      width: 25%;
 
-      margin: 10px 0 0 0;
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.main-content {
+  align-items: center;
+  background-position: bottom;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  justify-content: flex-start;
+  line-height: 1.5;
+  position: relative;
+  padding: 120px 0px;
+  .container-countdown {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .countdown-block {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-right: 30px;
+    &:last-child {
+      margin-right: 0;
+    }
+    .subtitle {
+      font-family: Open Sans;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 19px;
+      letter-spacing: 0em;
       text-align: center;
+      color: #626262;
+
     }
   }
-  .times {
-    font-size: 22px;
-  }
-}
-.times {
-  margin-top: 10px;
-
-  .time {
-    height: 110px;
-    width: 110px;
-    box-shadow: 3px 3px 5px 0px #00000040;
-    border-radius: 6px;
-    box-shadow: -3px -3px 5px 0px #ffffff;
+  .time-element {
     background: linear-gradient(180deg, #efefef 0%, #f8f8f8 50%, #efefef 100%);
-    border: 0.5px solid #626262;
-    //  margin-top: 10px;
-    font-family: "Pathway Gothic One", sans-serif;
+    border-radius: 8px;
+    // box-shadow: 0px 8px 0px 0px #16151d;
+    font-family: Pathway Gothic One;
     font-size: 80px;
     font-weight: 400;
-    line-height: 94px;
     letter-spacing: 0em;
-    text-align: center;
+    height: 140px;
+    line-height: 140px;
+    margin-bottom: 27px;
+    overflow: hidden;
     position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 44%;
-      left: 0;
-      width: 100%;
-      height: 2%;
-      background-color: #fff;
-    }
-
-  }
-  .pText {
-    font-family: Open Sans;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 19px;
-    letter-spacing: 0em;
     text-align: center;
-    color: #626262;
-  }
-}
-.box{
-  position: relative;
-  .Sleft{
-    position: absolute;
-    height: 10px;
-    width: 5px;
-    left: 0px;
-    top: 45px;
-    background: #626262;
+    width: 150px;
+    border-radius: 6px;
 
-  }
-  .Sright{
-    position: absolute;
-    height: 10px;
-    width: 5px;
-    right: 0px;
-    top: 45px;
-    background: #626262;
-  }
-}
-@media only screen and (max-width: 584px) {
-  .wrapper{
-    padding: 0 20px;
-  }
-   .times{
-    .time{
-      width: 50px;
-      height: 50px;
-      font-size: 40px;
-      line-height: 53px;
-      &::after{
-        top: 54%;
+    &::before,
+    &::after {
+      background: #626262;
+      border-bottom: 1px solid #fff;
+      content: "";
+      height: 10px;
+      position: absolute;
+      top: calc(50% - 5px);
+      width: 10px;
+      z-index: 6;
+    }
+    &::before {
+      left: -5px;
+    }
+    &::after {
+      right: -5px;
+    }
+    > span {
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+    .top {
+      background: linear-gradient(180deg, #efefef 0%, #f8f8f8 50%, #efefef 100%);
+      transform-origin: 50% 100%;
+      transform: perspective(200px);
+      z-index: 3;
+    }
+    .top::after,
+    .bottom-back::after {
+      border-bottom: 2px solid #fff;
+      bottom: 0;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+    .bottom {
+      z-index: 1;
+      &::before {
+        background: linear-gradient(180deg, #efefef 0%, #f8f8f8 50%, #efefef 100%);
+        content: "";
+        display: block;
+        height: 50%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
       }
-     }
-     .Sleft,.Sright{
-    top: 22px;
+    }
+    .bottom-back {
+      background: linear-gradient(180deg, #efefef 0%, #f8f8f8 50%, #efefef 100%);
+      height: 50%;
+      overflow: hidden;
+      top: 0;
+      z-index: 2;
+      span {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+    .top,
+    .top-back {
+      backface-visibility: hidden;
+      height: 50%;
+      overflow: hidden;
+    }
+    .top-back {
+      background: linear-gradient(180deg, #efefef 0%, #f8f8f8 50%, #efefef 100%);
+      bottom: 0;
+      transform-origin: 50% 0;
+      transform: perspective(200px) rotateX(180deg);
+      z-index: 4;
+      span {
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: -100%;
+      }
+    }
+  }
+}
 
-     }
-   }
+@media only screen and (max-width: 768px) {
+  .main-content .container-countdown {
+    flex-direction: column;
+    padding: 60px 0px;
+  }
 }

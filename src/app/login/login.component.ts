@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private router:Router
+  ) { }
   ngOnInit(): void {
+    let url=this.router.url
+    console.log(url);
+
+   if(url='/choose-color'){
+   return;
+   }else if(url='/choose-color'){
+
+   }
+  }
+
+  ngOnChanges(): void {
+
   }
 
 }

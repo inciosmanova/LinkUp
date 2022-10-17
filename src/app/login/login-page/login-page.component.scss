@@ -1,5 +1,9 @@
 .loginPage {
   padding-top: 10%;
+  background-image: url('../../../assets/login/Group\ 36LoginBg.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 76%;
   .LoginText {
     font-family: Nova Slim;
     font-size: 40px;
@@ -20,19 +24,47 @@
     }
   }
   .btn {
-    button{
-      background: #F9F9F9;
-      box-shadow: -3px -3px 5px #FFFFFF, -0.5px -0.5px 2px #FFFFFF, 0.5px 0.5px 2px rgba(0, 0, 0, 0.25), 3px 3px 5px rgba(0, 0, 0, 0.25);
-      border-radius: 6px;
-      color: #000;
-      width: 150px;
-      height: 40px;
-    }
+
+  }
+}
+img{
+  transform: scale(1.2);
+}
+// .col-1{
+//   width: 13%;
+// }
+// .col-6{
+//   width: 40%;
+// }
+// .col-7{
+//   width: 53.333%;
+// }
+.loginP{
+  font-family: 'Nova Slim', cursive;
+
+}
+ @media only screen and (max-width: 1000px) {
+  .loginPage{
+    background-image: none;
+  }
+  img{
+    transform: scale(1);
+  }
+  .loginForm {
+    padding-top: 5%;
+    padding-bottom:9%;
   }
 }
 
- @media only screen and (max-width: 1000px) {
-  .loginForm {
-    padding-top: 5%;
+@media only screen and (max-width: 1689px) and (min-width: 981px)  {
+  img{
+    transform: scale(1);
   }
+.selectForm{
+  width: 57px;
+  // padding:0;
+}
+.col-lg-3{
+  width: 35%;
+}
 }

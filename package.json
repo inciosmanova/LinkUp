@@ -20,8 +20,11 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@types/gsap": "^3.0.0",
     "bootstrap": "^5.2.2",
+    "gsap": "^3.11.3",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.5.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
