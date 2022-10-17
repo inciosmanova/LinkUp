@@ -1,5 +1,3 @@
-
-
 <div class="">
   <div class="mycontainer">
     <div class="row pt-2">
@@ -20,123 +18,132 @@
         <!-- </div> -->
       </div>
       <div class="center col-lg-7 ">
-        <div class="row">
-          <div class="col-lg-6 row centerItem">
-            <div class="col-3">
-              <div class="form-floating mb-3">
-                <select class="form-select py-0" aria-label="Default select example">
-                  <option value="1">051</option>
-                  <option value="2">050</option>
-                  <option value="3">070</option>
-                  <option value="3">077</option>
-                  <option value="3">055</option>
-                  <option value="3">099</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-floating">
-                <input type="number" class="form-control" id="floatingNumber" placeholder="Number">
-                <label for="floatingNumber">Mobil number </label>
-              </div>
-            </div>
-
-
-            <div class="col-9">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="floatingName" placeholder="Name">
-                <label for="floatingName">First name </label>
-              </div>
-            </div>
-
-            <div class="col-9">
-              <div class="form-floating">
-                <input type="number" class="form-control" id="Lastname" placeholder="Lastname">
-                <label for="Lastname">Last name </label>
-              </div>
-            </div>
-
-            <div class="col-9 ">
-              <form class="form-floating ">
-                <input type="password" class="form-control" id="Password" placeholder="Password">
-                <label for="Password">Password</label>
-              </form>
-
-            </div>
-
-            <div class="col-9 ">
-              <form class="form-floating ">
-                <input type="password" class="form-control" id="Repeatpassword" placeholder="Repeat password">
-                <label for="Repeatpassword">Repeat password</label>
-              </form>
-              <p class="pwd-text text-danger">Password should be min 6 simbol , letter and number</p>
-            </div>
-
-          </div>
-          <div class="col-lg-6 ">
-            <div class="col-9 row date m-auto">
-              <div class="col-4 form-floating ">
-                <input type="text" class="form-control " id="Day" placeholder="Day">
-                <label for="Day">Day</label>
-              </div>
-              <div class="form-floating col-4">
-                <input type="text" class="form-control " id="Month" placeholder="Month">
-                <label for="Month">Month </label>
-              </div>
-              <div class="form-floating col-4">
-                <input type="text" class="form-control " id="Year" placeholder="Year">
-                <label for="Year">Year </label>
-              </div>
-              <p class="Lbltext text-center">Date of birth</p>
-
-            </div>
-
-            <div class="col-9 row m-auto">
-              <div class="row gender justify-content-center align-items-center ">
-
-                <ul class="d-flex justify-content-center m-0">
-                  <li><input type="radio" id="cb1" name="gender" value="gender" />
-                    <label for="cb1"><img src="../../../assets/login/man.svg" /></label>
-                  </li>
-                  <li><input type="radio" id="cb2" name="gender" value="gender" />
-                    <label for="cb2"><img src="../../../assets/login/female.svg" /></label>
-                  </li>
-                </ul>
-              <p class="Lbltext text-center">Cinsiyətinizi seçin</p>
-
-              </div>
-
-
-            </div>
-
-
-          </div>
-        </div>
-        <div class="alertBox pt-1 mt-5 centerItem">
+        <form action="" [formGroup]="registrForm">
           <div class="row">
-            <div class="col-4 d-flex justify-content-end">
-              <img src="../../../assets/login/AlertMan.svg" alt="">
+            <div class="col-lg-6 row centerItem">
+              <div class="col-3">
+                <div class="form-floating mb-3">
+                  <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
+                    <option value="051">051</option>
+                    <option value="050">050</option>
+                    <option value="070">070</option>
+                    <option value="077">077</option>
+                    <option value="055">055</option>
+                    <option value="099">099</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-floating">
+                  <input type="number" class="form-control" id="floatingNumber" placeholder="Number"
+                    formControlName="phoneNumber">
+                  <label for="floatingNumber">Mobil number </label>
+                </div>
+              </div>
+
+
+              <div class="col-9">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingName" placeholder="Name" formControlName="name">
+                  <label for="floatingName">First name </label>
+                </div>
+              </div>
+
+              <div class="col-9">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="Lastname" placeholder="Lastname"
+                    formControlName="surname">
+                  <label for="Lastname">Last name </label>
+                </div>
+              </div>
+
+              <div class="col-9 ">
+                <form class="form-floating ">
+                  <input type="password" class="form-control" id="Password" placeholder="Password"
+                    formControlName="password">
+                  <label for="Password">Password</label>
+                </form>
+
+              </div>
+
+              <div class="col-9 ">
+                <form class="form-floating ">
+                  <input type="password" class="form-control" id="Repeatpassword" placeholder="Repeat password"
+                    formControlName="repeatpassword">
+                  <label for="Repeatpassword">Repeat password</label>
+                </form>
+                <p class="pwd-text text-danger">Password should be min 6 simbol , letter and number</p>
+                <p *ngIf="registrForm.value.password!=registrForm.value.repeatpassword" class="pwd-text text-danger">
+                  Password
+                  eyni deyil</p>
+              </div>
+
             </div>
-            <div class="col-8">
-              <p class="alertP text-start "><span class="bText">~Diqqət:</span>
+            <div class="col-lg-6 ">
+              <div class="col-9 row date m-auto">
+                <div class="col-4 form-floating ">
+                  <input type="text" class="form-control " id="Day" placeholder="Day" formControlName="day">
+                  <label for="Day">Day</label>
+                </div>
+                <div class="form-floating col-4">
+                  <input type="text" class="form-control " id="Month" placeholder="Month" formControlName="month">
+                  <label for="Month">Month </label>
+                </div>
+                <div class="form-floating col-4">
+                  <input type="text" class="form-control " id="Year" placeholder="Year" formControlName="year">
+                  <label for="Year">Year </label>
+                </div>
+                <p class="Lbltext text-center">Date of birth</p>
+
+              </div>
+
+              <div class="col-9 row m-auto">
+                <div class="row gender justify-content-center align-items-center ">
+
+                  <ul class="d-flex justify-content-center m-0">
+                    <li><input type="radio" id="cb1" name="gender" value="male" formControlName="gender" />
+                      <label for="cb1"><img src="../../../assets/login/man.svg" /></label>
+                    </li>
+                    <li><input type="radio" id="cb2" name="gender" value="female" formControlName="gender" />
+                      <label for="cb2"><img src="../../../assets/login/female.svg" /></label>
+                    </li>
+                  </ul>
+                  <p class="Lbltext text-center">Cinsiyətinizi seçin</p>
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="alertBox pt-1 mt-5 centerItem">
+            <div class="row">
+              <div class="col-4 d-flex justify-content-end">
+                <img src="../../../assets/login/AlertMan.svg" alt="">
+              </div>
+              <div class="col-8">
+                <p class="alertP text-start "><span class="bText">~Diqqət:</span>
+                  Xahiş olunur xanaları düzgün və tam doldurasınız !
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 centerItem  text-right d-flex justify-content-end btnBox">
+            <div class="btn mt-5 mb-5 m-auto">
+              <button class="dartBtn" (click)="Submit()">Done</button>
+              <p class="alertP text-start text-danger">
                 Xahiş olunur xanaları düzgün və tam doldurasınız !
               </p>
             </div>
-          </div>
-        </div>
 
-
-        <div class="col-12 centerItem  text-right d-flex justify-content-end btnBox">
-          <div class="btn mt-5 mb-5 m-auto">
-            <button routerLink="/register/register-code" class="dartBtn">Done</button>
-            <p class="alertP text-start text-danger">
-              Xahiş olunur xanaları düzgün və tam doldurasınız !
-            </p>
           </div>
 
-        </div>
 
-
+        </form>
       </div>
       <div class="right col-lg-5">
         <!-- <div class="cardBox">
@@ -151,7 +158,7 @@
         </div> -->
 
         <!-- <div class="cardBox"> -->
-          <img class="cardImg" src="../../../assets/login/Group 42RGirl.svg" alt="">
+        <img class="cardImg" src="../../../assets/login/Group 42RGirl.svg" alt="">
         <!-- </div> -->
       </div>
     </div>

@@ -5,45 +5,73 @@
   <section id="color">
     <div class="headText">
       <pre>
-           Hər gün yeni bir başlanğıcdır.
-                              Dərin bir nəfəs al,
-                gülümsə və yenidən başla.
-        </pre>
+             Hər gün yeni bir başlanğıcdır.
+                                Dərin bir nəfəs al,
+                  gülümsə və yenidən başla.
+          </pre>
     </div>
-    <div class="all-main text-center">
-      <div class="chooseColorDiv">
-        <h1 class="ChooseColor">RƏNGİNİ SEÇ</h1>
-        <img src="../../../assets/login/blackLine.svg" alt="">
-      </div>
-      <div class="allColorBox row justify-content-center">
-        <div [className]="blue ? 'col-2 colorBtn p-0 d-flex justify-content-end' : 'none'">
-          <img [className]="blue=='blue' ? 'block' : ''" (click)="ClickBlue()" src="../../../assets/login/Blue.svg"
-            alt="">
+    <form action="" [formGroup]="colorsForm">
+
+      <div class="all-main text-center">
+        <div class="chooseColorDiv">
+          <h1 class="ChooseColor">RƏNGİNİ SEÇ</h1>
+          <img src="../../../assets/login/blackLine.svg" alt="">
         </div>
-        <div [className]="red ? 'col-2 colorBtn p-0 d-flex justify-content-center' : 'none'">
-          <img [className]="red=='red' ? 'block' : ''" (click)="ClickRed()" src="../../../assets/login/Red.svg" alt="">
-        </div>
-        <div [className]="green ? 'col-2 colorBtn p-0 d-flex justify-content-start' : 'none'">
-          <img [className]="green=='green' ? 'block' : ''" (click)="ClickGreen()" src="../../../assets/login/Green.svg"
-            alt="">
-        </div>
-      </div>
-      <div class="alertBox pt-1">
-        <div class="row">
-          <div class="col-4 d-flex justify-content-end">
-            <img src="../../../assets/login/AlertMan.svg" alt="">
+        <div class="allColorBox row justify-content-center">
+          <!-- <div [className]="blue ? 'col-2 colorBtn p-0 d-flex justify-content-end' : 'none'">
+            <img [className]="blue=='blue' ? 'block' : ''" (click)="ClickBlue()" src="../../../assets/login/Blue.svg"
+              alt="">
           </div>
-          <div class="col-8">
-            <p class="alertP text-start"><span class="bText">~Diqqət:</span> Bəzi seçimlər sonradan dəyiştirilmir !
-              <span class="alertText">Xahiş olunur rənginizi seçəsiniz !</span>
-            </p>
+          <div [className]="red ? 'col-2 colorBtn p-0 d-flex justify-content-center' : 'none'">
+            <img [className]="red=='red' ? 'block' : ''" (click)="ClickRed()" src="../../../assets/login/Red.svg" alt="">
+          </div>
+          <div [className]="green ? 'col-2 colorBtn p-0 d-flex justify-content-start' : 'none'">
+            <img [className]="green=='green' ? 'block' : ''" (click)="ClickGreen()" src="../../../assets/login/Green.svg"
+              alt="" >
+          </div> -->
+          <ul class="d-flex justify-content-center m-0">
+            <li id="li"
+              [className]="color=='color' ? 'col-5 d justify-content-end block colorBtn1' : 'col-5 d-flex justify-content-end colorBtn1'">
+              <input type="radio" id="cb1" name="colorId" (click)="ClickColor('blue')" [value]="Colors[1]?.colorId"
+                formControlName="colorId" />
+              <label for="cb1"><img src="../../../assets/login/Blue.svg" alt=""></label>
+            </li>
+            <li id="li1"
+              [className]="color=='color' ? 'block col-2 d justify-content-center colorBtn2' : 'col-2 d-flex justify-content-center colorBtn2'">
+              <input type="radio" id="cb2" name="colorId" [value]="Colors[2]?.colorId" (click)="ClickColor('red')"
+                formControlName="colorId" />
+              <label for="cb2"><img src="../../../assets/login/Red.svg" alt=""></label>
+            </li>
+            <li id="li2"
+              [className]="color=='color' ? 'block col-5 d justify-content-start colorBtn3' : 'col-5 d-flex justify-content-start colorBtn3'">
+              <input type="radio" id="cb3" name="colorId" [value]="Colors[0]?.colorId" (click)="ClickColor('green')"
+                formControlName="colorId" />
+              <label for="cb3"> <img src="../../../assets/login/Green.svg" alt=""></label>
+            </li>
+          </ul>
+        </div>
+        <div class="alertBox pt-1">
+          <div class="row">
+            <div class="col-4 d-flex justify-content-end">
+              <img src="../../../assets/login/AlertMan.svg" alt="">
+            </div>
+            <div class="col-8">
+              <p class="alertP text-start"><span class="bText">~Diqqət:</span> Bəzi seçimlər sonradan dəyiştirilmir !
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="btn d-flex justify-content-center">
-      <button class="dartBtn" routerLink="/register" (click)="ReyestrSubmit()">I’am ready</button>
-    </div>
+      <div class="btn d-flex justify-content-center">
+        <div class="div">
+          <button class="dartBtn" (click)="ReyestrSubmit()">I’am
+            ready</button>
+          <h1 *ngIf="colorsForm.invalid && formSubmitAttempt" class="alertText pt-1">Xahiş olunur rənginizi seçəsiniz !
+          </h1>
+        </div>
+
+      </div>
+    </form>
   </section>
   <!-- //loginpage -->
 

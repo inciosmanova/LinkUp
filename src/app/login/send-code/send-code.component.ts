@@ -16,7 +16,6 @@ export class SendCodeComponent implements OnInit {
   ngOnInit(): void {
   }
   SendSms() {
-    this.router.navigate(['/choose-color/forgetPassword'])
     this.dialogRef.close()
   }
   CloseDialog() {

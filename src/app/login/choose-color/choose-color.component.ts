@@ -1,5 +1,9 @@
+import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, HostListener, Inject, OnInit ,Renderer2  } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, OnInit, Renderer2 } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Color } from 'src/app/_model/color';
+import { LoginService } from 'src/app/_services/login.service';
 
 @Component({
   selector: 'app-choose-color',
@@ -8,42 +12,66 @@ import { Component, ElementRef, HostListener, Inject, OnInit ,Renderer2  } from 
 })
 export class ChooseColorComponent implements OnInit {
 
-  blue:any=true
-  red:any=true
-  green:any=true
+  color: any = true;
+  blue: string = ''
+  red: string = ''
+  green: string = ''
+  Colors: Color[] = []
+  formSubmitAttempt: boolean = false;
+
   constructor(
-
+    private service: LoginService,
+    private fb: FormBuilder,
+    private router: Router
   ) { }
+  colorsForm!: FormGroup;
 
-  ngOnInit(
-
-  ): void {
+  ngOnInit() {
+    this.GetColors()
+    this.createForm()
   }
-  ClickBlue(){
-    this.red=false
-    this.blue='blue'
-    this.green=false
+  createForm() {
+    this.colorsForm = this.fb.group({
+      colorId: ['', Validators.required],
+    })
   }
-  ClickRed(){
-    this.red='red'
-    this.blue=false
-    this.green=false
-
+  ReyestrSubmit() {
+    this.formSubmitAttempt = true
+    if (this.colorsForm.invalid) {
+      return;
+    } else {
+      this.router.navigate(['register'], { queryParams: { colorId: this.colorsForm.value.colorId } })
+    }
+    // this.colorId == '' ? console.log('Bos') : console.log(form)
   }
-  ClickGreen(){
-    this.red=false
-    this.blue=false
-    this.green='green'
-
-  }
-  ReyestrSubmit(){
-
+  GetColors() {
+    this.service.GetColors().subscribe(res => {
+      this.Colors = res
+    })
   }
 
 
-  // window.addEventListener("scroll", reveal);
+  ClickColor(typeColor: string) {
+    let li = document.getElementById('li');
+    let li1 = document.getElementById('li1');
+    let li2 = document.getElementById('li2');
 
-  @HostListener('window:scroll', ['$event'])    reveal() {
+    if (typeColor == 'blue') {
+      li1!.style.display = 'none'
+      li2!.style.display = 'none'
+    } else if (typeColor == 'red') {
+      li!.style.display = 'none'
+      li2!.style.display = 'none'
+    } else {
+      li!.style.display = 'none'
+      li1!.style.display = 'none'
+    }
+
+
+    this.color = 'color'
+  }
+
+  @HostListener('window:scroll', ['$event']) reveal() {
     var reveals = document.querySelectorAll(".reveal");
 
     for (var i = 0; i < reveals.length; i++) {
