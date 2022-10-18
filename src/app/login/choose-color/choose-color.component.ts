@@ -25,7 +25,9 @@ export class ChooseColorComponent implements OnInit {
     private router: Router
   ) { }
   colorsForm!: FormGroup;
-
+  //Colors[1]?.colorId-blue
+  //Colors[2]?.colorId-red
+  //Colors[0]?.colorId-green
   ngOnInit() {
     this.GetColors()
     this.createForm()
@@ -40,7 +42,15 @@ export class ChooseColorComponent implements OnInit {
     if (this.colorsForm.invalid) {
       return;
     } else {
-      this.router.navigate(['register'], { queryParams: { colorId: this.colorsForm.value.colorId } })
+      let colorId
+       if(this.colorsForm.value.colorId=='blue'){
+          colorId=this.Colors[1]?.colorId
+       }else if(this.colorsForm.value.colorId=='red'){
+        colorId=this.Colors[2]?.colorId
+       }else if(this.colorsForm.value.colorId=='green'){
+        colorId=this.Colors[0]?.colorId
+       }
+      this.router.navigate(['register'], { queryParams: { colorId: colorId } })
     }
     // this.colorId == '' ? console.log('Bos') : console.log(form)
   }

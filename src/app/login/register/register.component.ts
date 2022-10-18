@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/_services/login.service';
 
 
 @Component({
@@ -15,10 +16,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private ActivatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private service:LoginService) {
   }
   registrForm!: FormGroup;
   colorId: string = ''
+  clicksubmit:boolean=false
   ngOnInit(): void {
     this.ActivatedRoute.queryParams.subscribe((params) => {
       this.colorId = params['colorId']
@@ -34,8 +37,8 @@ export class RegisterComponent implements OnInit {
       phoneStart: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       colorId: [this.colorId || '', Validators.required],
-      password: ['3', [Validators.required, PasswordStrengthValidator]],
-      repeatpassword: ['', Validators.required],
+      password: ['', [Validators.required, PasswordStrengthValidator]],
+      repeatpassword: ['', [Validators.required, PasswordStrengthValidator]],
       day: ['', Validators.required],
       month: ['', Validators.required],
       year: ['', Validators.required],
@@ -44,14 +47,17 @@ export class RegisterComponent implements OnInit {
   }
 
   Submit() {
-
+   this.clicksubmit=true
 
     debugger
-    if (this.registrForm.invalid) {
 
+
+    if (this.registrForm.invalid) {
+         return;
     } else {
       const phoneNumber = `${this.registrForm.value.phoneStart} ${this.registrForm.value.phoneNumber}`
       const dateOfBirth = new Date(`${this.registrForm.value.day}/ ${this.registrForm.value.month} /${this.registrForm.value.year}`);
+
       const postForm = {
         name: this.registrForm.value.name,
         surname: this.registrForm.value.surname,
@@ -59,9 +65,13 @@ export class RegisterComponent implements OnInit {
         colorId: this.registrForm.value.colorId,
         password: this.registrForm.value.password,
         dateOfBirth: dateOfBirth,
-        gender: (this.registrForm.value.gender == 'male') ? true : false
+        gender: Boolean(this.registrForm.value.gender )
       }
       console.log(this.registrForm.value);
+      this.service.Registration(postForm).subscribe(result=>{
+        console.log(result);
+
+      })
       // this.router.navigate(["/register/register-code"])
     }
   }

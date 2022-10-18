@@ -32,19 +32,19 @@
           <ul class="d-flex justify-content-center m-0">
             <li id="li"
               [className]="color=='color' ? 'col-5 d justify-content-end block colorBtn1' : 'col-5 d-flex justify-content-end colorBtn1'">
-              <input type="radio" id="cb1" name="colorId" (click)="ClickColor('blue')" [value]="Colors[1]?.colorId"
+              <input type="radio" id="cb1" name="colorId" (click)="ClickColor('blue')" value="blue"
                 formControlName="colorId" />
               <label for="cb1"><img src="../../../assets/login/Blue.svg" alt=""></label>
             </li>
             <li id="li1"
               [className]="color=='color' ? 'block col-2 d justify-content-center colorBtn2' : 'col-2 d-flex justify-content-center colorBtn2'">
-              <input type="radio" id="cb2" name="colorId" [value]="Colors[2]?.colorId" (click)="ClickColor('red')"
+              <input type="radio" id="cb2" name="colorId" value="red" (click)="ClickColor('red')"
                 formControlName="colorId" />
               <label for="cb2"><img src="../../../assets/login/Red.svg" alt=""></label>
             </li>
             <li id="li2"
               [className]="color=='color' ? 'block col-5 d justify-content-start colorBtn3' : 'col-5 d-flex justify-content-start colorBtn3'">
-              <input type="radio" id="cb3" name="colorId" [value]="Colors[0]?.colorId" (click)="ClickColor('green')"
+              <input type="radio" id="cb3" name="colorId" value="green" (click)="ClickColor('green')"
                 formControlName="colorId" />
               <label for="cb3"> <img src="../../../assets/login/Green.svg" alt=""></label>
             </li>
