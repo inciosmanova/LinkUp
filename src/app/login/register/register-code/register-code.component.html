@@ -1,21 +1,23 @@
 <div class="container all">
   <img class="imgBg" src="../../../../assets/login/EnterRegistrCodeBg.svg" alt="">
   <div class="all-box">
-    <div class="col-12 d-flex justify-content-end button" mat-dialog-close>
+    <div class="col-12 d-flex justify-content-end button" routerLink="/register">
       <img src="../../../assets/login/Close.svg" alt="">
     </div>
     <div class="sendSms">
       <div class="row">
-        <h3 class="codeH">Please include the code in the box</h3>
+        <h3 class="codeH text-center">Please include the code in the box</h3>
 
-        <div class="col-12 d-flex enterCode  align-items-center">
+        <div class="col-12 d-flex enterCode justify-content-center align-items-center">
           <div class="form-floating">
-            <input type="text" class="form-control " id="EnterCode" placeholder="EnterCode">
+            <input type="text" maxlength="6" class="form-control " id="EnterCode" placeholder="EnterCode"
+              [(ngModel)]="optCode" (keyup)=" EnterCode($event)"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
             <label for="EnterCode">Enter code here </label>
           </div>
           <div class="RWAbox">
-            <img class="px-1" src="../../../assets/login/Wrong.svg" alt="">
-            <img class="px-1" src="../../../assets/login/Right.svg" alt="">
+            <img *ngIf="optCodeType==false" class="px-1" src="../../../assets/login/Wrong.svg" alt="">
+            <img *ngIf="optCodeType==true" class="px-1" src="../../../assets/login/Right.svg" alt="">
           </div>
         </div>
 
@@ -23,10 +25,10 @@
 
         <div class="col-12 text-center">
           <div class="btn">
-            <button routerLink="/counter" [queryParams]="{type:'ok' }" (click)="Submit()" class="dartBtn">ok</button>
+            <button (click)="Submit()" class="dartBtn">ok</button>
           </div>
         </div>
-        <div class="col-12 text-danger text-center">Daxil etdiyiniz kod yanlışdır! </div>
+        <div *ngIf="!message" class="col-12 text-danger text-center">Daxil etdiyiniz kod yanlışdır! </div>
       </div>
 
     </div>

@@ -7,3 +7,12 @@ export interface Registeruser {
   dateOfBirth: Date;
   gender: boolean;
 }
+export interface ResultRegister {
+  userId: string;
+  isSuccess: boolean;
+  message: string;
+
+}
+export interface RegisterCode {
+  otpCode: string
+}

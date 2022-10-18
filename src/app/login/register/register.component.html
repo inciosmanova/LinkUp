@@ -36,7 +36,8 @@
               <div class="col-6">
                 <div class="form-floating">
                   <input type="number" class="form-control" id="floatingNumber" placeholder="Number"
-                    formControlName="phoneNumber">
+                    formControlName="phoneNumber" maxlength="7"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                   <label for="floatingNumber">Mobil number </label>
                 </div>
               </div>
@@ -58,28 +59,30 @@
               </div>
 
               <div class="col-9 ">
-                <form class="form-floating ">
+                <div class="form-floating ">
                   <input type="password" class="form-control" id="Password" placeholder="Password"
                     formControlName="password">
                   <label for="Password">Password</label>
-                </form>
+                </div>
 
               </div>
 
               <div class="col-9 ">
-                <form class="form-floating ">
+                <div class="form-floating ">
                   <input type="password" class="form-control" id="Repeatpassword" placeholder="Repeat password"
                     formControlName="repeatpassword">
                   <label for="Repeatpassword">Repeat password</label>
-                </form>
-                <p *ngIf="registrForm.get('password')?.hasError('passwordStrength')&&clicksubmit" class="pwd-text text-danger">Şifrə minimum 6 rəqəmdən ,böyük kiçik hərflərdən ve simvollardan ibarət olmalıdır</p>
+                </div>
 
-
-                <p *ngIf="registrForm.value.password!=registrForm.value.repeatpassword" class="pwd-text text-danger">
-                  Password
-                  eyni deyil</p>
               </div>
+              <p *ngIf="registrForm.get('password')?.hasError('passwordStrength')&&clicksubmit"
+                class="pwd-text text-danger">
+                Şifrə minimum 6 rəqəmdən ,böyük kiçik hərflərdən ibarət
+                olmalıdır</p>
 
+
+              <p *ngIf="registrForm.value.password!=registrForm.value.repeatpassword" class="pwd-text text-danger">
+                Password eyni deyil</p>
             </div>
             <div class="col-lg-6 ">
               <div class="col-9 row date m-auto">
@@ -103,10 +106,10 @@
                 <div class="row gender justify-content-center align-items-center ">
 
                   <ul class="d-flex justify-content-center m-0">
-                    <li><input type="radio" id="cb1" name="gender" value="true" formControlName="gender" />
+                    <li><input type="radio" id="cb1" name="gender" value="'true'" formControlName="gender" />
                       <label for="cb1"><img src="../../../assets/login/man.svg" /></label>
                     </li>
-                    <li><input type="radio" id="cb2" name="gender" value="false" formControlName="gender" />
+                    <li><input type="radio" id="cb2" name="gender" value="'false'" formControlName="gender" />
                       <label for="cb2"><img src="../../../assets/login/female.svg" /></label>
                     </li>
                   </ul>
@@ -126,21 +129,21 @@
                 <img src="../../../assets/login/AlertMan.svg" alt="">
               </div>
               <div class="col-8">
-                <p class="alertP text-start "><span class="bText">~Diqqət:</span>
+                <h1 class="alertP text-start "><span class="bText">~Diqqət:</span>
                   Xahiş olunur xanaları düzgün və tam doldurasınız !
-                </p>
+                </h1>
               </div>
             </div>
           </div>
 
 
           <div class="col-12 centerItem  text-right d-flex justify-content-end btnBox">
-            <div class="btn mt-5 mb-5 m-auto">
+            <div class="btn mt-2 mb-5 m-auto">
 
               <button class="dartBtn" (click)="Submit()">Done</button>
-              <p *ngIf="registrForm.invalid&&clicksubmit" class="alertP text-start text-danger">
+              <h1 *ngIf="registrForm.invalid&&clicksubmit" class="alertP text-start text-danger">
                 Xahiş olunur xanaları düzgün və tam doldurasınız !
-              </p>
+              </h1>
 
 
             </div>

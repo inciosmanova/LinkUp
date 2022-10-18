@@ -1,6 +1,7 @@
 .mycontainer {
-  padding: 70px 0px 0px 175px;
+  padding: 44px 0px 0px 175px;
   overflow: hidden;
+  height: 100%;
 }
 .gender {
   // button {
@@ -125,53 +126,17 @@
   .alertP {
     font-family: Open Sans;
     font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
     font-style: italic;
-    font-weight: 400;
     line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #626262;
     .bText {
       font-weight: 800;
+      line-height: 19px;
     }
   }
 }
-// .right {
-//   // background-image: url("");
-//   background-repeat: no-repeat;
-//   height: 80vh;
-//   background-position: left bottom;
 
-//   .cardBox {
-//     position: relative;
-//     height: auto;
-//     img {
-//       position: absolute;
-//       left: 0;
-//       top: 0;
-//     }
-//     .textbox {
-//       position: absolute;
-//       right: 13%;
-//       top: 28%;
-//       .t {
-//         font-family: Nova Slim;
-//         font-size: 35px;
-//         font-weight: 400;
-//         line-height: 42px;
-//         letter-spacing: 0em;
-//         text-align: center;
-//         color: #ffffff;
-//       }
-//       .t2 {
-//         font-size: 25px;
-//         line-height: 30px;
-//       }
-//     }
-//     .cardImg {
-//     }
-//   }
-// }
 .left {
   display: NONE;
 }
@@ -182,7 +147,7 @@
 }
 .right {
   position: relative;
-  min-height: 46rem;
+  // min-height: 46rem;
   // .cardBox {
   // margin-top: 9rem;
   img {
@@ -238,32 +203,6 @@
   }
 }
 
-// @media only screen and (max-width: 947px) {
-//   .left{
-//    transform:translate(21%, 0px);
-//   }
-//  }
-//  @media only screen and (max-width: 947px) {
-//   .left{
-//    transform:translate(21%, 0px);
-//   }
-//  }
-//  @media only screen and (max-width: 914px) {
-//   .left{
-//    transform:translate(17%, 0px);
-//   }
-//  }
-//  @media only screen and (max-width: 861px) {
-//   .left{
-//    transform:translate(11%, 0px);
-//   }
-//  }
-//  @media only screen and (max-width: 814px) {
-//   .left{
-//    transform:translate(5%, 0px);
-//   }
-//  }
-
 @media only screen and (max-width: 727px) {
   .mycontainer {
     padding: 110px 0px 0px 0px;
@@ -279,20 +218,13 @@
     //  transform:translate(5%, 0px);
   }
 }
-//  @media only screen and (max-width: 702px) {
-//   .left{
-//    transform:translate(-2%, 0px);
-//   }
-//  }
-//  @media only screen and (max-width: 672px) {
-//   .left{
-//    transform:translate(-8%, 0px);
-//   }
-//  }
-//  @media only screen and (max-width: 636px) {
-//   .left{
-//     img{
-//     width:144% ;
-//    }
-//   }
-//  }
+@media screen and (max-height: 1200px) and (min-height: 820px) {
+  .right {
+    height: 82vh;
+  }
+}
+@media screen and (max-height: 820px) and (min-height: 747px) {
+  .right {
+    height: 79vh;
+  }
+}

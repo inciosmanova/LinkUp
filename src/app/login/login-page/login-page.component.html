@@ -12,42 +12,48 @@
         <img src="../../../assets/login/AlertWoman.svg" alt="">
       </div>
       <div class="col-lg-3 px-5 loginForm">
-        <div class="row">
-          <div class="col-3">
-            <div class="form-floating mb-3 selectForm">
-              <select class="form-select py-0" aria-label="Default select example">
-                <option value="1">051</option>
-                <option value="2">050</option>
-                <option value="3">070</option>
-                <option value="3">077</option>
-                <option value="3">055</option>
-                <option value="3">099</option>
-              </select>
-            </div>
+        <form action="" [formGroup]="loginForm">
+          <div class="row">
+            <div class="col-3">
+              <div class="form-floating mb-3 selectForm">
+                <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
+                  <option value="051">051</option>
+                  <option value="050">050</option>
+                  <option value="070">070</option>
+                  <option value="077">077</option>
+                  <option value="055">055</option>
+                  <option value="099">099</option>
+                </select>
+              </div>
 
-          </div>
-          <div class="col-8">
-            <div class="form-floating inputForm">
-              <input type="number" class="form-control" id="floatingNumber" placeholder="Number">
-              <label for="floatingNumber">Mobil number </label>
             </div>
-          </div>
-          <div class="col-11">
-            <form class="form-floating inputForm">
-              <input type="password" class="form-control" id="Password" placeholder="name@example.com">
-              <label for="Password">Password</label>
-            </form>
-          </div>
-          <div class="col-11 d-flex  justify-content-end">
-            <a (click)="openDialog()" class="py-2">Forgot password?</a>
-          </div>
-          <div class="col-11 text-center py-3">
-            <div class="btn">
-              <button class="whitebtn">Log in</button>
+            <div class="col-8">
+              <div class="form-floating inputForm">
+                <input type="number" class="form-control" id="floatingNumber" placeholder="Number"
+                  formControlName="phoneEnd" maxlength="7"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <label for="floatingNumber">Mobil number </label>
+              </div>
             </div>
+            <div class="col-11">
+              <div class="form-floating inputForm">
+                <input type="password" class="form-control" id="Password" formControlName="password">
+                <label for="Password">Password</label>
+              </div>
+            </div>
+            <div class="col-11 d-flex  justify-content-end">
+              <a (click)="openDialog()" class="py-2">Forgot password?</a>
+            </div>
+            <div class="col-11 text-center py-3">
+              <div class="btn">
+                <button type="submit" (click)="SubmitForm()" class="whitebtn">Log in</button>
+              </div>
+            </div>
+            <div *ngIf="loginType" class="col-11 text-danger  text-bolder text-center">Xahiş olunur müvafiq sahələri
+              doldurun</div>
+            <div class="col-11 text-danger text-center text-bolder">{{errorMessage}}</div>
           </div>
-          <div class="col-11 text-danger text-center">Şifrə və ya nömrə düzgün daxil edilməmiştir!</div>
-        </div>
+        </form>
       </div>
       <div class="col-lg-4">
         <!-- <div class="forgetForm"></div> -->

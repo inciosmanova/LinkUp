@@ -16,7 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterCodeComponent } from './register/register-code/register-code.component';
 import { CounterComponent } from './counter/counter.component';
 import { HttpClientModule } from '@angular/common/http'
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,7 +40,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class LoginModule { }

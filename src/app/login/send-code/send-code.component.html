@@ -2,29 +2,33 @@
   <img src="../../../assets/login/Close.svg" alt="">
 </div>
 <div class=" sendSms">
-  <div class="row">
-    <div class="col-3">
-      <div class="form-floating mb-2">
-        <select class="form-select py-0" aria-label="Default select example">
-          <option value="1">051</option>
-          <option value="2">050</option>
-          <option value="3">070</option>
-        </select>
+  <form action="" [formGroup]="forgetpwd">
+    <div class="row">
+      <div class="col-3">
+        <div class="form-floating mb-2">
+          <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
+            <option value="051">051</option>
+            <option value="050">050</option>
+            <option value="070">070</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="col-9">
-      <div class="form-floating">
-        <input type="number" class="form-control" id="floatingNumber" placeholder="Number">
-        <label for="floatingNumber">Mobil number </label>
+      <div class="col-9">
+        <div class="form-floating">
+          <input type="number" class="form-control" id="floatingNumber" placeholder="Number" formControlName="phoneEnd"
+            maxlength="7"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+          <label for="floatingNumber">Mobil number </label>
+        </div>
       </div>
-    </div>
-    <div class="col-12 text-center">
-      <div class="btn">
-        <button (click)="SendSms()" routerLink="/choose-color/forgetPassword" class="dartBtn"
-          [queryParams]="{type:'register' }">Send SMS</button>
+      <div class="col-12 text-center">
+        <div class="btn">
+          <button type="submit" (click)="SendSms()" class="dartBtn">Send SMS</button>
+        </div>
       </div>
+      <div *ngIf="formType" class="col-11 text-danger  text-bolder text-center">Xahiş olunur müvafiq sahələri
+        doldurun</div>
+      <div class="col-12 text-danger text-center">{{message}} </div>
     </div>
-    <div class="col-12 text-danger text-center">Daxil etdiyiniz mobil nömrə yanlışdır! </div>
-  </div>
-
+  </form>
 </div>

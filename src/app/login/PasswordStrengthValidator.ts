@@ -24,9 +24,9 @@ export const PasswordStrengthValidator = function (control: AbstractControl): Va
     return { passwordStrength: `text has to contine number characters,current value ${value}` };
   }
 
-  let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-  if (specialCharacters.test(value) === false) {
-    return { passwordStrength: `text has to contine special character,current value ${value}` };
-  }
+  // let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+  // if (specialCharacters.test(value) === false) {
+  //   return { passwordStrength: `text has to contine special character,current value ${value}` };
+  // }
   return null;
 }
