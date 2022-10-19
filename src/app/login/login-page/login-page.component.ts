@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
   }
   createForm() {
     this.loginForm = this.fb.group({
-      phoneStart: ['', Validators.required],
+      phoneStart: ['051', Validators.required],
       phoneEnd: ['', Validators.required],
       password: ['', Validators.required]
     })

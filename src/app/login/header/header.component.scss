@@ -71,7 +71,7 @@
   }
   .btn {
     button {
-      width: 60px;
+      width: 68px;
     }
   }
 }
@@ -79,6 +79,16 @@
   .image-div {
     img {
       padding-left: 20px !important;
+    }
+  }
+}
+@media screen and (max-height: 1300px) and (min-height: 820px) {
+  .right {
+    .flag{
+      padding-right: 20px!important;
+    }
+    button{
+      font-size: 13px;
     }
   }
 }

@@ -52,7 +52,7 @@ img{
   }
   .loginForm {
     padding-top: 5%;
-    padding-bottom:9%;
+    padding-bottom:13%;
   }
 }
 
@@ -67,4 +67,28 @@ img{
 .col-lg-3{
   width: 35%;
 }
+}
+@media screen and (max-height: 1200px) and (min-height: 1000px) {
+  .selectForm {
+    select{
+      // width: 125%;
+    }
+
+  }
+}
+@media only screen and (max-width: 402px)  {
+  .selectForm {
+    select{
+      width: 132%;
+    }
+
+  }
+}
+@media only screen and (max-width: 324px)  {
+  .selectForm {
+    select{
+      width: 148%;
+    }
+
+  }
 }

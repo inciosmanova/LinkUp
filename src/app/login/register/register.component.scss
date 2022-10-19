@@ -98,9 +98,11 @@
     // padding: 1rem 1rem;
     line-height: 12px;
     text-align: center;
+   left: 5px;
   }
   input {
     margin: 3px;
+    text-align: center;
   }
 }
 .center {
@@ -160,6 +162,19 @@
   // }
 }
 @media only screen and (max-width: 982px) {
+  .date{
+    width: 75.5%;
+    input{
+      text-align: center;
+      padding: 1rem 0.5rem;
+    }
+    label{
+      left: 5px;
+    }
+  }
+  .resP{
+    text-align: center!important;
+  }
   .mycontainer {
     padding: 110px 0px 0px 0px;
     overflow: hidden;
@@ -218,9 +233,14 @@
     //  transform:translate(5%, 0px);
   }
 }
-@media screen and (max-height: 1200px) and (min-height: 820px) {
+@media only screen and (max-width: 320px) {
+  .form-select{
+    width: 125%;
+  }
+}
+@media screen and (max-height: 1300px) and (min-height: 820px) {
   .right {
-    height: 82vh;
+    height: 82vh  ;
   }
 }
 @media screen and (max-height: 820px) and (min-height: 747px) {

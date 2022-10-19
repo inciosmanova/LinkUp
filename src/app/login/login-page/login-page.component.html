@@ -15,9 +15,10 @@
         <form action="" [formGroup]="loginForm">
           <div class="row">
             <div class="col-3">
+
               <div class="form-floating mb-3 selectForm">
                 <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
-                  <option value="051">051</option>
+                  <option value="051" selected>051</option>
                   <option value="050">050</option>
                   <option value="070">070</option>
                   <option value="077">077</option>
@@ -37,8 +38,9 @@
             </div>
             <div class="col-11">
               <div class="form-floating inputForm">
-                <input type="password" class="form-control" id="Password" formControlName="password">
-                <label for="Password">Password</label>
+                <input type="password" class="form-control" id="Password" placeholder="password"
+                  formControlName="password">
+                <label for="Password">Password </label>
               </div>
             </div>
             <div class="col-11 d-flex  justify-content-end">

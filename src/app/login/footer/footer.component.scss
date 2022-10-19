@@ -23,8 +23,20 @@
     }
   }
 }
+.paddingRes{
+  padding: 0px 8px;
+}
 @media only screen and (max-width: 982px) {
   .paddingRes {
     padding: 0px 15px;
   }
+}
+
+@media only screen and (max-width: 316px) {
+  // .all-logo {
+
+  //   img{
+  //     transform: scale(0.7);
+  //   }
+  // }
 }

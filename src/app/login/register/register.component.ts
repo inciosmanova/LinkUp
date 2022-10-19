@@ -35,12 +35,11 @@ export class RegisterComponent implements OnInit {
     this.registrForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      phoneStart: ['', Validators.required],
+      phoneStart: ['051', Validators.required],
       phoneNumber: ['', Validators.required],
       colorId: [this.colorId || '', Validators.required],
       password: ['', [Validators.required, PasswordStrengthValidator]],
       repeatpassword: ['', [Validators.required, PasswordStrengthValidator]],
-
       day: ['', Validators.required],
       month: ['', Validators.required],
       year: ['', Validators.required],
@@ -50,6 +49,7 @@ export class RegisterComponent implements OnInit {
 
   Submit() {
     this.clicksubmit = true
+    console.log(new Date());
 
     debugger
 
@@ -57,9 +57,11 @@ export class RegisterComponent implements OnInit {
     if (this.registrForm.invalid) {
       return;
     } else {
+      debugger
       const phoneNumber = `${this.registrForm.value.phoneStart}${this.registrForm.value.phoneNumber}`
-      const dateOfBirth = new Date(`${this.registrForm.value.day}/ ${this.registrForm.value.month} /${this.registrForm.value.year}`);
-
+      const dateOfBirth = new Date(`${this.registrForm.value.month} /${this.registrForm.value.day}/${this.registrForm.value.year}`);
+       let gender:boolean;
+        this.registrForm.value.gender =='true' ? gender=true :gender=false
       const postForm = {
         name: this.registrForm.value.name,
         surname: this.registrForm.value.surname,
@@ -67,7 +69,7 @@ export class RegisterComponent implements OnInit {
         colorId: this.registrForm.value.colorId,
         password: this.registrForm.value.password,
         dateOfBirth: dateOfBirth,
-        gender: Boolean(this.registrForm.value.gender)
+        gender: gender
       }
       console.log(this.registrForm.value);
       this.service.Registration(postForm).subscribe(result => {

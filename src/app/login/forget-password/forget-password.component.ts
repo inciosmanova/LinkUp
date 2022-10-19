@@ -55,6 +55,7 @@ export class ForgetPasswordComponent implements OnInit {
     }
   }
   Submit() {
+    debugger
     this.clicksubmit = true
     if (this.PasswordConformForm.invalid) {
       return;
@@ -69,7 +70,7 @@ export class ForgetPasswordComponent implements OnInit {
           this.router.navigate(['/choose-color'])
           Swal.fire({
             html:
-              '<h2 class="swal2-text">Şifrəniz yenilənmişdir</h2>',
+              `<h2 class="swal2-text">${res.message}</h2>`,
             imageUrl: '../../../../assets/login/Click.svg',
             imageHeight: 50,
             confirmButtonText: 'Cancel',
