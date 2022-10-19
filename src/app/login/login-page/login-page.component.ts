@@ -52,7 +52,7 @@ export class LoginPageComponent implements OnInit {
                   `<h2 class="swal2-text">${res.message}</h2>`,
                 imageUrl: '../../../../assets/login/Click.svg',
                 imageHeight: 50,
-                confirmButtonText: 'Cancel',
+                confirmButtonText: 'Ok',
                 confirmButtonColor: "#353E47 "
               })
               return;
@@ -81,7 +81,7 @@ export class LoginPageComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(SendCodeComponent, {
-      width: '350px'
+      width: '350px', position: { top: '180px' }
     });
   }
 

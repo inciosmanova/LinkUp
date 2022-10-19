@@ -6,6 +6,7 @@
   width: 100%;
   background: #353e47;
   z-index: 8;
+  height: 60px;
   .footerP {
     font-family: Open Sans;
     font-size: 14px;
@@ -23,20 +24,43 @@
     }
   }
 }
-.paddingRes{
-  padding: 0px 8px;
+.paddingRes {
+  padding: 0px 15px;
 }
-@media only screen and (max-width: 982px) {
-  .paddingRes {
-    padding: 0px 15px;
+.FColoredlogo {
+  display: none;
+  transition: all linear 0.8s;
+}
+.Flogo {
+  display: block;
+  transition: all linear 0.8s;
+}
+button {
+  &:hover {
+    .FColoredlogo {
+      display: block;
+      transition: all linear 0.8s;
+    }
+    .Flogo {
+      display: none;
+      transition: all linear 0.8s;
+    }
   }
 }
+// @media only screen and (max-width: 982px) {
+//   .paddingRes {
+//     padding: 0px 15px;
+//   }
+// }
 
-@media only screen and (max-width: 316px) {
-  // .all-logo {
-
-  //   img{
-  //     transform: scale(0.7);
-  //   }
-  // }
+@media only screen and (max-width: 368px) {
+  .all-logo {
+    padding: 0;
+    img {
+      width: 35px;
+    }
+  }
+  .PRes {
+    padding: 0;
+  }
 }

@@ -1,9 +1,12 @@
 .loginPage {
   padding-top: 10%;
-  background-image: url('../../../assets/login/Group\ 36LoginBg.svg');
+  background-image: url("../../../assets/login/Group\ 36LoginBg.svg");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 76%;
+  .colSelect {
+    padding-right: 0 !important;
+  }
   .LoginText {
     font-family: Nova Slim;
     font-size: 40px;
@@ -24,10 +27,12 @@
     }
   }
   .btn {
-
   }
 }
-img{
+.rightLogin {
+  display: none;
+}
+img {
   transform: scale(1.2);
 }
 // .col-1{
@@ -39,56 +44,62 @@ img{
 // .col-7{
 //   width: 53.333%;
 // }
-.loginP{
-  font-family: 'Nova Slim', cursive;
-
+.loginP {
+  font-family: "Nova Slim", cursive;
 }
- @media only screen and (max-width: 1000px) {
-  .loginPage{
+@media only screen and (max-width: 1000px) {
+  .loginPage {
     background-image: none;
   }
-  img{
+  img {
     transform: scale(1);
   }
   .loginForm {
     padding-top: 5%;
-    padding-bottom:13%;
+    padding-bottom: 13%;
   }
 }
-
-@media only screen and (max-width: 1689px) and (min-width: 981px)  {
-  img{
+@media only screen and (max-width: 981px) {
+  .leftLogin {
+    display: none;
+  }
+  .rightLogin {
+    display: block;
+  }
+}
+@media only screen and (max-width: 1689px) and (min-width: 981px) {
+  img {
     transform: scale(1);
   }
-.selectForm{
-  width: 57px;
-  // padding:0;
-}
-.col-lg-3{
-  width: 35%;
-}
+  .selectForm {
+    // width: 57px;
+    // padding:0;
+  }
+  .col-lg-3 {
+    width: 35%;
+  }
 }
 @media screen and (max-height: 1200px) and (min-height: 1000px) {
   .selectForm {
-    select{
+    select {
       // width: 125%;
     }
-
   }
 }
-@media only screen and (max-width: 402px)  {
+@media only screen and (max-width: 402px) {
   .selectForm {
-    select{
-      width: 132%;
+    select {
+      // width: 132%;
     }
-
   }
 }
-@media only screen and (max-width: 324px)  {
+@media only screen and (max-width: 333px) {
+  .loginPage {
+    overflow: hidden;
+  }
   .selectForm {
-    select{
-      width: 148%;
+    select {
+      width: 118%;
     }
-
   }
 }

@@ -46,7 +46,7 @@ export class RegisterCodeComponent implements OnInit {
                 '<h2 class="swal2-text">Qeydiyyatınız uğurla tamamlanmışdır</h2>',
               imageUrl: '../../../../assets/login/Click.svg',
               imageHeight: 50,
-              confirmButtonText: 'Cancel',
+              confirmButtonText: 'Ok',
               confirmButtonColor: "#353E47 "
             })
           } else {

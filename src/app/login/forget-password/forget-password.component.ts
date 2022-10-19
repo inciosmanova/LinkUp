@@ -73,7 +73,7 @@ export class ForgetPasswordComponent implements OnInit {
               `<h2 class="swal2-text">${res.message}</h2>`,
             imageUrl: '../../../../assets/login/Click.svg',
             imageHeight: 50,
-            confirmButtonText: 'Cancel',
+            confirmButtonText: 'Ok',
             confirmButtonColor: "#353E47 "
           })
         },

@@ -50,18 +50,14 @@ export class RegisterComponent implements OnInit {
   Submit() {
     this.clicksubmit = true
     console.log(new Date());
-
-    debugger
-
-
     if (this.registrForm.invalid) {
       return;
     } else {
       debugger
       const phoneNumber = `${this.registrForm.value.phoneStart}${this.registrForm.value.phoneNumber}`
       const dateOfBirth = new Date(`${this.registrForm.value.month} /${this.registrForm.value.day}/${this.registrForm.value.year}`);
-       let gender:boolean;
-        this.registrForm.value.gender =='true' ? gender=true :gender=false
+      let gender: boolean;
+      this.registrForm.value.gender == 'true' ? gender = true : gender = false
       const postForm = {
         name: this.registrForm.value.name,
         surname: this.registrForm.value.surname,

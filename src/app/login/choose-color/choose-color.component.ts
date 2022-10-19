@@ -18,7 +18,7 @@ export class ChooseColorComponent implements OnInit {
   green: string = ''
   Colors: Color[] = []
   formSubmitAttempt: boolean = false;
-
+  animationType: boolean = false
   constructor(
     private service: LoginService,
     private fb: FormBuilder,
@@ -43,13 +43,13 @@ export class ChooseColorComponent implements OnInit {
       return;
     } else {
       let colorId
-       if(this.colorsForm.value.colorId=='blue'){
-          colorId=this.Colors[1]?.colorId
-       }else if(this.colorsForm.value.colorId=='red'){
-        colorId=this.Colors[2]?.colorId
-       }else if(this.colorsForm.value.colorId=='green'){
-        colorId=this.Colors[0]?.colorId
-       }
+      if (this.colorsForm.value.colorId == 'blue') {
+        colorId = this.Colors[1]?.colorId
+      } else if (this.colorsForm.value.colorId == 'red') {
+        colorId = this.Colors[2]?.colorId
+      } else if (this.colorsForm.value.colorId == 'green') {
+        colorId = this.Colors[0]?.colorId
+      }
       this.router.navigate(['register'], { queryParams: { colorId: colorId } })
     }
     // this.colorId == '' ? console.log('Bos') : console.log(form)
@@ -62,23 +62,50 @@ export class ChooseColorComponent implements OnInit {
 
 
   ClickColor(typeColor: string) {
+
     let li = document.getElementById('li');
     let li1 = document.getElementById('li1');
     let li2 = document.getElementById('li2');
 
-    if (typeColor == 'blue') {
-      li1!.style.display = 'none'
-      li2!.style.display = 'none'
-    } else if (typeColor == 'red') {
-      li!.style.display = 'none'
-      li2!.style.display = 'none'
-    } else {
-      li!.style.display = 'none'
-      li1!.style.display = 'none'
+    if (!this.animationType) {
+      if (typeColor == 'blue') {
+        li1!.style.transition = 'all linear 0.4s'
+        li1!.style.display = 'none'
+        li2!.style.transition = 'all linear 0.4s'
+        li2!.style.display = 'none'
+      } else if (typeColor == 'red') {
+        li!.style.transition = 'all linear 0.4s'
+        li!.style.display = 'none'
+        li2!.style.transition = 'all linear 0.4s'
+        li2!.style.display = 'none'
+      } else {
+        li!.style.transition = 'all linear 0.4s'
+        li!.style.display = 'none'
+        li1!.style.display = 'none'
+        li1!.style.transition = 'all linear 0.4s'
+      }
+      this.animationType = true
+      this.color = 'color'
+      return;
+    } else if (this.animationType) {
+      if (typeColor == 'blue') {
+        li1!.style.display = 'flex'
+        li2!.style.display = 'flex'
+      } else if (typeColor == 'red') {
+        li!.style.display = 'flex'
+        li2!.style.display = 'flex'
+      } else {
+        li!.style.display = 'flex'
+        li1!.style.display = 'flex'
+      }
+      this.animationType = false;
+      this.color = ''
+      return;
+
+
     }
 
 
-    this.color = 'color'
   }
 
   @HostListener('window:scroll', ['$event']) reveal() {

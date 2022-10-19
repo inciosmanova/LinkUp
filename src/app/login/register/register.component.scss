@@ -1,5 +1,5 @@
 .mycontainer {
-  padding: 44px 0px 0px 175px;
+  padding: 25px 0px 0px 175px;
   overflow: hidden;
   height: 100%;
 }
@@ -38,32 +38,35 @@
     display: block;
     position: relative;
     margin: 10px;
-    background: linear-gradient(180deg, #efefef 0%, #f8f8f8 50%, #efefef 100%);
+    background: #f9f9f9;
     box-shadow: 3px 3px 5px 0px #00000040;
     border-radius: 10px;
     border: none;
     height: 50px;
     width: 50px;
-    box-shadow: -3px -3px 5px 0px #ffffff;
+    box-shadow: 0px -3px 5px #ffffff, 0px 3px 5px rgba(0, 0, 0, 0.25);
+
     cursor: pointer;
   }
 
   label:before {
+    height: 50px;
+    width: 50px;
+    left: 3904px;
+    top: 260px;
+    border-radius: 6px;
+
     background-color: white;
     color: white;
     content: " ";
     display: block;
-    border-radius: 50%;
     border: 1px solid grey;
     position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 25px;
-    height: 25px;
     text-align: center;
     line-height: 28px;
     transition-duration: 0.4s;
     transform: scale(0);
+    box-shadow: 0px -3px 5px #ffffff, 0px 3px 5px rgba(0, 0, 0, 0.25);
   }
 
   label img {
@@ -98,7 +101,7 @@
     // padding: 1rem 1rem;
     line-height: 12px;
     text-align: center;
-   left: 5px;
+    left: 5px;
   }
   input {
     margin: 3px;
@@ -162,18 +165,18 @@
   // }
 }
 @media only screen and (max-width: 982px) {
-  .date{
+  .date {
     width: 75.5%;
-    input{
+    input {
       text-align: center;
       padding: 1rem 0.5rem;
     }
-    label{
+    label {
       left: 5px;
     }
   }
-  .resP{
-    text-align: center!important;
+  .resP {
+    text-align: center !important;
   }
   .mycontainer {
     padding: 110px 0px 0px 0px;
@@ -234,13 +237,13 @@
   }
 }
 @media only screen and (max-width: 320px) {
-  .form-select{
+  .form-select {
     width: 125%;
   }
 }
 @media screen and (max-height: 1300px) and (min-height: 820px) {
   .right {
-    height: 82vh  ;
+    height: 82vh;
   }
 }
 @media screen and (max-height: 820px) and (min-height: 747px) {

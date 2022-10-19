@@ -1,7 +1,7 @@
 <div class="container">
   <div class="loginPage">
     <div class="row">
-      <div class="col-lg-3 reveal-item ">
+      <div class="col-lg-3 reveal-item leftLogin">
         <h1 class="LoginText d-flex justify-content-center">
           <p class="loginP">
             LinkUp həyatınızı
@@ -14,7 +14,7 @@
       <div class="col-lg-3 px-5 loginForm">
         <form action="" [formGroup]="loginForm">
           <div class="row">
-            <div class="col-3">
+            <div class="col-3 colSelect">
 
               <div class="form-floating mb-3 selectForm">
                 <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
@@ -56,6 +56,16 @@
             <div class="col-11 text-danger text-center text-bolder">{{errorMessage}}</div>
           </div>
         </form>
+      </div>
+      <div class="col-lg-3 reveal-item rightLogin">
+        <h1 class="LoginText d-flex justify-content-center">
+          <p class="loginP">
+            LinkUp həyatınızı
+            <br>
+            rəngləndi<span class="red">r</span><span class="blue">i</span><span an class="green">r</span>!
+          </p>
+        </h1>
+        <img src="../../../assets/login/AlertWoman.svg" alt="">
       </div>
       <div class="col-lg-4">
         <!-- <div class="forgetForm"></div> -->
