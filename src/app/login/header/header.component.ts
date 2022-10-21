@@ -1,6 +1,9 @@
+import { LoginService } from 'src/app/_services/login.service';
+import { AnimationEvent } from '@angular/animations';
 import { ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, ActivationStart, Router, NavigationError, NavigationCancel, NavigationStart } from '@angular/router';
+import { LoadingService } from 'src/app/_services/loading.service';
 
 @Component({
   selector: 'app-header',
@@ -8,30 +11,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  loginText: string = ''
+  url: any = ''
   audioType = false
-  audio: HTMLAudioElement = new Audio('../../../assets/music/Dua Lipa - New Rules.mp3');
+  @Input() title: string = '';
+  audio: HTMLAudioElement = new Audio('');
+
   constructor(private viewportScroller: ViewportScroller,
-    private ActivatedRoute: ActivatedRoute) { }
+    private service: LoginService,
+    private router: Router,
+  ) { }
   scrollToElement(): void {
     this.viewportScroller.scrollToAnchor('login');
   }
   ngOnInit(): void {
-    this.ActivatedRoute.queryParams.subscribe((params) => {
-      console.log(params);
 
 
-    });
-    // console.log(url);
-    // debugger
-    //  if(url=='/choose-color'){
-    //   this.loginText = ''
-    //  }else if(url == '/counter'){
-    //   this.loginText = 'login'
-    //  }else {
-    //   this.loginText = 'loading'
-    //  }
-    //  console.log('ff');
 
   }
   gradient = document.getElementById('gradient')
@@ -42,5 +36,9 @@ export class HeaderComponent implements OnInit {
   onAfterOpen(e: any) {
     this.audioType = false
     this.audio.pause();
+  }
+  LogOut() {
+    this.service.logOut();
+    this.router.navigate(['/choose-color'])
   }
 }

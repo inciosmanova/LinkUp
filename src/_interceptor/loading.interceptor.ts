@@ -1,3 +1,4 @@
+import { LoadingService } from 'src/app/_services/loading.service';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -5,17 +6,19 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { delay, finalize, Observable } from 'rxjs';
-import { LoadingService } from 'src/app/_services/loading.service';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
+
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
-  constructor(private readonly busyService: LoadingService) { }
+  constructor(public spinner: LoadingService) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.busyService.busy();
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.spinner.showSpinner();
     return next.handle(request).pipe(
-      finalize(() => this.busyService.idle())
-    );
+      finalize(() => this.spinner.hideSpinner())
+    )
   }
 }

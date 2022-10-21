@@ -1,3 +1,4 @@
+import { SwalAlertService } from './../../../_services/swal-alert.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_services/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ export class RegisterCodeComponent implements OnInit {
   optCodeType: boolean | any = null
   message: boolean = true
   constructor(private service: LoginService,
-    private router: Router) { }
+    private router: Router,
+    private alertService: SwalAlertService) { }
 
   ngOnInit(): void {
   }
@@ -40,15 +42,10 @@ export class RegisterCodeComponent implements OnInit {
 
           if (res.isSuccess) {
 
-            this.router.navigate(['/choose-color'])
-            Swal.fire({
-              html:
-                '<h2 class="swal2-text">Qeydiyyatınız uğurla tamamlanmışdır</h2>',
-              imageUrl: '../../../../assets/login/Click.svg',
-              imageHeight: 50,
-              confirmButtonText: 'Ok',
-              confirmButtonColor: "#353E47 "
-            })
+            this.router.navigate(['/counter'])
+            this.alertService.SuccesAlert('Qeydiyyatınız uğurla tamamlanmışdır', 'login/Click.svg');
+            return;
+
           } else {
 
           }

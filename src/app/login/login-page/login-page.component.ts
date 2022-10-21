@@ -1,3 +1,4 @@
+import { SwalAlertService } from './../../_services/swal-alert.service';
 import { LoginObj } from './../../_model/login';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_services/login.service';
@@ -17,7 +18,8 @@ export class LoginPageComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private fb: FormBuilder,
     private Service: LoginService,
-    private router: Router
+    private router: Router,
+    private alertService: SwalAlertService
   ) { }
   loginForm!: FormGroup
   loginType: boolean = false;
@@ -47,20 +49,13 @@ export class LoginPageComponent implements OnInit {
           next: res => {
             if (res.isSuccess) {
               this.router.navigate(['/counter'])
-              Swal.fire({
-                html:
-                  `<h2 class="swal2-text">${res.message}</h2>`,
-                imageUrl: '../../../../assets/login/Click.svg',
-                imageHeight: 50,
-                confirmButtonText: 'Ok',
-                confirmButtonColor: "#353E47 "
-              })
+              this.alertService.SuccesAlert(res.message, 'login/Click.svg');
               return;
+            } else {
+              this.errorMessage = res.message
+              // this.alertService.FailAlert(res.message, 'login/fail.svg')
+              // console.log(res.message);
             }
-            this.errorMessage = res.message
-
-          }, error: error => {
-            this.errorMessage = error.message
 
 
           }

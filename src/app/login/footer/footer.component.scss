@@ -16,7 +16,7 @@
     color: #fff;
   }
   .all-logo {
-    button {
+    a {
       background-color: transparent;
       border: none;
       padding: 0;
@@ -35,7 +35,7 @@
   display: block;
   transition: all linear 0.8s;
 }
-button {
+a {
   &:hover {
     .FColoredlogo {
       display: block;

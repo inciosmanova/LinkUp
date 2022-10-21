@@ -1,3 +1,4 @@
+import { SwalAlertService } from './../../_services/swal-alert.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_services/login.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -17,7 +18,8 @@ export class ForgetPasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
-    private router: Router
+    private router: Router,
+    private alertService: SwalAlertService
   ) { }
   PasswordConformForm!: FormGroup
 
@@ -66,28 +68,11 @@ export class ForgetPasswordComponent implements OnInit {
       }
       this.service.ForgetPasswordConfirm(form).subscribe({
         next: res => {
-          console.log(res);
           this.router.navigate(['/choose-color'])
-          Swal.fire({
-            html:
-              `<h2 class="swal2-text">${res.message}</h2>`,
-            imageUrl: '../../../../assets/login/Click.svg',
-            imageHeight: 50,
-            confirmButtonText: 'Ok',
-            confirmButtonColor: "#353E47 "
-          })
+          this.alertService.SuccesAlert(res.message, 'login/Click.svg')
         },
         error: error => {
-          console.log(error);
-          Swal.fire({
-            html:
-              `<h2 class="swal2-text">${error.error.message}</h2>`,
-            imageUrl: '../../../../assets/login/Click.svg',
-            imageHeight: 50,
-            confirmButtonText: 'Cancel',
-            confirmButtonColor: "#353E47 "
-          })
-
+          this.alertService.FailAlert(error.error.message, 'login/fail.svg')
         }
       })
     }

@@ -1,3 +1,4 @@
+import { SwalAlertService } from './../../_services/swal-alert.service';
 import { PasswordStrengthValidator } from './../PasswordStrengthValidator';
 import { Registeruser } from './../../_model/registeruser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   constructor(private ActivatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private service: LoginService) {
+    private service: LoginService,
+    private alertservice: SwalAlertService) {
   }
   registrForm!: FormGroup;
   colorId: string = ''
@@ -28,8 +30,6 @@ export class RegisterComponent implements OnInit {
       this.colorId = params['colorId']
     });
     this.createForm()
-    console.log(this.registrForm);
-
   }
   createForm() {
     this.registrForm = this.fb.group({
@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
 
   Submit() {
     this.clicksubmit = true
-    console.log(new Date());
     if (this.registrForm.invalid) {
       return;
     } else {
@@ -67,19 +66,12 @@ export class RegisterComponent implements OnInit {
         dateOfBirth: dateOfBirth,
         gender: gender
       }
-      console.log(this.registrForm.value);
       this.service.Registration(postForm).subscribe(result => {
         if (result.isSuccess) {
           this.router.navigate(['/register/register-code']);
+          this.alertservice.SuccesAlert(result.message, 'login/Click.svg')
         } else {
-          Swal.fire({
-            html:
-              `<h2 class="swal2-text">${result.message}</h2>`,
-            imageUrl: '../../../../assets/login/fail.svg',
-            imageHeight: 50,
-            confirmButtonText: 'Cancel',
-            confirmButtonColor: "#353E47 "
-          })
+          this.alertservice.FailAlert(result.message, 'login/fail.svg')
         }
 
       })

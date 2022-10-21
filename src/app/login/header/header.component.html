@@ -1,7 +1,11 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.1)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
 <div class="container p">
   <div class="row header align-items-center justify-content-between">
     <div class=" col-2 image-div ">
-      <img routerLink="/" src="../../../assets/login/LinkUpLogo.svg" alt="">
+      <img src="../../../assets/login/LinkUpLogo.svg" alt="">
     </div>
     <div class="col-5 musicbox d-flex justify-content-end">
 
@@ -15,15 +19,16 @@
     <div class="col-5 row d-flex justify-content-end right">
       <div class="flag col-6 d-flex justify-content-end align-items-center p-0">
         <div class="btn">
-          <button *ngIf="loginText==''" class="dartBtn" (click)="scrollToElement()">Log in</button>
-          <button *ngIf="loginText=='loading'" class="dartBtn" (click)="scrollToElement()"><img
+          <button *ngIf="title=='url1'" class="dartBtn" (click)="scrollToElement()">Log in</button>
+          <button *ngIf="title=='url3'" class="dartBtn homebtn" routerLink="/"><img
               src="../.././../assets/login/iconhome.svg" alt=""></button>
-          <button *ngIf="loginText=='login'" class="dartBtn" (click)="scrollToElement()"><img
+          <button *ngIf="title=='url2'" class="dartBtn exitbtn" (click)="LogOut()"><img
               src="../.././../assets/login/iconexit.svg" alt=""></button>
           <!-- <a href="#login" >Log in</a> -->
         </div>
         <img class="mx-1" src="../../../assets/login/Flag AZ.svg" alt="">
         <img src="../../../assets/login/Flag EN.svg" alt="">
+
       </div>
     </div>
   </div>

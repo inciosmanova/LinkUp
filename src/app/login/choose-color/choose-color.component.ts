@@ -22,7 +22,8 @@ export class ChooseColorComponent implements OnInit {
   constructor(
     private service: LoginService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+
   ) { }
   colorsForm!: FormGroup;
   //Colors[1]?.colorId-blue

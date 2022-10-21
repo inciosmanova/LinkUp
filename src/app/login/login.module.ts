@@ -1,3 +1,4 @@
+import { LoadingInterceptor } from 'src/_interceptor/loading.interceptor';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { NgModule } from '@angular/core';
@@ -15,8 +16,9 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { RegisterComponent } from './register/register.component';
 import { RegisterCodeComponent } from './register/register-code/register-code.component';
 import { CounterComponent } from './counter/counter.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -41,7 +43,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
+  ],
+  providers: [
+
+
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ]
 })
 export class LoginModule { }

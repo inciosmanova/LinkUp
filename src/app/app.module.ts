@@ -1,3 +1,5 @@
+import { RoleGuard } from './login/Role.guard';
+import { LoginGuard } from './login/login.guard';
 import { MainModule } from './main/main.module';
 import { LoginModule } from './login/login.module';
 import { NgModule } from '@angular/core';
@@ -8,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from 'src/_interceptor/loading.interceptor';
+import { UnAuthorizedInterceptor } from 'src/environments/un-authorized.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,11 @@ import { LoadingInterceptor } from 'src/_interceptor/loading.interceptor';
 
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    LoginGuard,
+    RoleGuard
+    ,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UnAuthorizedInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
