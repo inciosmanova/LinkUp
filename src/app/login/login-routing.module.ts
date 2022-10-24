@@ -10,11 +10,11 @@ import { CounterComponent } from './counter/counter.component';
 
 const routes: Routes = [
   { path: "", redirectTo: 'counter', pathMatch: 'full' },
-  { path: "choose-color", component: ChooseColorComponent, },
+  { path: "choose-color", component: ChooseColorComponent, canActivate: [RoleGuard]},
   { path: "register", component: RegisterComponent, },
   { path: "counter", component: CounterComponent, canActivate: [LoginGuard] },
-  { path: "choose-color/forgetPassword", component: ForgetPasswordComponent, },
-  { path: "register/register-code", component: RegisterCodeComponent, },
+  { path: "choose-color/forgetPassword", component: ForgetPasswordComponent, canActivate: [RoleGuard]},
+  { path: "register/register-code", component: RegisterCodeComponent, canActivate: [RoleGuard]},
 ];
 
 @NgModule({

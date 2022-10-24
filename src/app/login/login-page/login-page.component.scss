@@ -1,5 +1,6 @@
 .loginPage {
   padding-top: 10%;
+  padding-bottom: 36px;
   background-image: url("../../../assets/login/Group\ 36LoginBg.svg");
   background-repeat: no-repeat;
   background-position: right;
@@ -8,7 +9,7 @@
     padding-right: 0 !important;
   }
   .LoginText {
-    font-family: Nova Slim;
+    font-family: Open Sans;
     font-size: 40px;
     font-weight: 400;
     line-height: 60px;
@@ -45,7 +46,8 @@ img {
 //   width: 53.333%;
 // }
 .loginP {
-  font-family: "Nova Slim", cursive;
+      font-family: Open Sans;
+
 }
 @media only screen and (max-width: 1000px) {
   .loginPage {

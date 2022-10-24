@@ -10,10 +10,7 @@ export class AppComponent {
   title = 'LinkUp';
   constructor(private router: Router) { }
   ngOnInit() {
-    let login = localStorage.getItem('Linkuptoken')
-    if (!login) {
-      this.router.navigate(['/choose-color'])
-    }
+
 
   }
 }

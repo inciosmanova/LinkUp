@@ -8,14 +8,10 @@ export class RoleGuard implements CanActivate {
     private route: Router
   ) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    //   let login = localStorage.getItem('Linkuptoken')
-
-    //   if (login) {
-    //     this.route.navigate(['/counter'])
-    //     return false
-    //   }
-    //   this.route.navigate(['/choose-color'])
-
-    return true
+    if (!this.LoginService.loggedIn()) {
+      return true
+    }
+    this.route.navigate(['/'])
+    return false
   }
 }

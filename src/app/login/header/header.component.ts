@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   url: any = ''
   audioType = false
   @Input() title: string = '';
-  audio: HTMLAudioElement = new Audio('');
+  audio: HTMLAudioElement = new Audio('../../../assets/music/[YT2mp3.info] - Music to put you in a better mood _ Study music - lofi _ relax _ stress relief (320kbps).mp3');
 
   constructor(private viewportScroller: ViewportScroller,
     private service: LoginService,
