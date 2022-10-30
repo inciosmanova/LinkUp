@@ -1,3 +1,4 @@
+import { AlertifyService } from './../../_services/alertftJs.service';
 import { SwalAlertService } from './../../_services/swal-alert.service';
 import { PasswordStrengthValidator } from './../PasswordStrengthValidator';
 import { Registeruser } from './../../_model/registeruser';
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private service: LoginService,
-    private alertservice: SwalAlertService) {
+    private alertservice: SwalAlertService,
+    private alertifyService:AlertifyService) {
   }
   registrForm!: FormGroup;
   colorId: string = ''
@@ -50,6 +52,9 @@ export class RegisterComponent implements OnInit {
   Submit() {
     this.clicksubmit = true
     if (this.registrForm.invalid) {
+      // this.alertifyService.set('notifier','position', 'bottom-left');
+
+       this.alertifyService.error('Xahiş olunur xanaları düzgün və tam doldurasınız!')
       return;
     } else {
       debugger
@@ -77,6 +82,8 @@ export class RegisterComponent implements OnInit {
       })
       // this.router.navigate(["/register/register-code"])
     }
+
+
   }
 
 }

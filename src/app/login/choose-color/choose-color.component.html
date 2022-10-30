@@ -73,14 +73,22 @@
           </div>
         </div>
       </div>
-      <div class="btn d-flex justify-content-center">
-        <div class="div">
-          <button class="dartBtn" (click)="ReyestrSubmit()">I’am
-            ready</button>
-          <h1 *ngIf="colorsForm.invalid && formSubmitAttempt" class="alertText pt-1">Xahiş olunur rənginizi seçəsiniz !
-          </h1>
-        </div>
 
+      <div class="designbtn  justify-content-center">
+        <div class="anim-btn">
+          <button  class="anim-btn__button" (mouseover)="MouseOverButton()" (mouseleave)="MouseLeaveButton()" (click)="ReyestrSubmit()">I’am
+            ready</button>
+          <div id="animbtnoverlay" class="anim-btn__overlay"></div>
+        </div>
+        <!-- <h1 *ngIf="colorsForm.invalid && formSubmitAttempt" class="alertText d-block pt-1">Xahiş olunur rənginizi seçəsiniz !
+        </h1> -->
+
+      </div>
+      <div class="loginBox d-flex justify-content-center" >
+       <div class="box text-center" (click)="scrollToElement()">
+        <h1 class="m-0">LOGIN</h1>
+        <img src="../../../assets/login/arrow_forward_iosarrow.svg" alt="">
+       </div>
       </div>
     </form>
   </section>

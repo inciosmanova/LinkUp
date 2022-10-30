@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit {
     private service: LoginService,
     private router: Router,
   ) { }
-  scrollToElement(): void {
-    this.viewportScroller.scrollToAnchor('login');
-  }
+  // scrollToElement(): void {
+  //   this.viewportScroller.scrollToAnchor('login');
+  // }
   ngOnInit(): void {
 
 

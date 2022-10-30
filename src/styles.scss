@@ -2,6 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Lato:wght@100;300&family=Open+Sans:ital,wght@0,400;1,300&family=Pathway+Gothic+One&family=Poppins:ital,wght@0,400;1,300&family=Roboto:wght@100;300&family=Yeseva+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Lato:wght@100;300&family=Nova+Slim&family=Open+Sans:ital,wght@0,400;1,300&family=Pathway+Gothic+One&family=Poppins:ital,wght@0,400;1,300&family=Roboto:wght@100;300&family=Yeseva+One&display=swap");
+@import "~alertifyjs/build/css/alertify.min.css";
+@import "~alertifyjs/build/css/themes/bootstrap.rtl.min.css";
+.alertify-notifier .ajs-message {
+  background-color: #F96A6A!important;
+  border-radius: 5px!important;
+  margin-bottom: 60px!important;
+  border-left: 5px solid #C21010;
+  width: 300px;
+  height:80px;
+}
 
 html {
 }
@@ -46,6 +56,136 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #66bfbf;
+}
+// .designbtn {
+//   border: none;
+//   button {
+//     height: 50px;
+//     width: 200px;
+//     border-radius: 0px;
+//     border: 2px solid #353e47;
+//     background-color: #fff;
+//     font-family: Open Sans;
+//     font-size: 16px;
+//     font-weight: 600;
+//     line-height: 22px;
+//     letter-spacing: 0em;
+//     text-align: rıght;
+//     position: relative;
+//     &::after {
+//       content:'';
+//       position: absolute;
+//       width: 100%;
+//       height: 100%;
+//       background-color: #000;
+//       top: 51px;
+//       left: 0;
+//       transition: 0.2s ;
+//       opacity: 0;
+//       // z-index: -8;
+//   }
+//       &:hover{
+//         transition: 0.2s ;
+//         &::after {
+//           content:'';
+//           position: absolute;
+//           width: 100%;
+//           height: 100%;
+//           background-color: #000;
+//           top: -54px;
+//           left: 0;
+//           opacity: 1;
+//           // z-index: -1;
+//       }
+//       }
+//   }
+//   .dartBtn {
+//     background: #353e47;
+
+//     // font-family: Open Sans;
+//     border: none;
+//     font-size: 16px;
+//     font-weight: 500;
+//     line-height: 22px;
+//     // letter-spacing: 0em;
+//     color: #fff;
+//     &:hover {
+//       box-shadow: 2px 2px 5px 0px #00000080 inset !important;
+
+//       box-shadow: -2px -2px 5px 0px #b7b4b480 inset !important;
+//       background: #50565f !important;
+//     }
+//     &:focus {
+//       color: #4ffdd3 !important;
+//     }
+//   }
+// }
+
+.anim-btn__overlay {
+
+  background-color: #000;
+  height: calc(100% + 2px);
+  width: 100%;
+  position: absolute;
+  bottom: calc(-100% - 2px);
+  left: 0;
+  z-index: -1;
+  transition: transform 300ms ease;
+}
+.anim-btn {
+  width: max-content;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.anim-btn__button {
+
+  height: 50px;
+  width: 200px;
+  border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid #000;
+  color: #000;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: rıght;
+
+  transition: color 300ms ease, transform 300ms ease;
+
+  // &:hover,
+  // &:focus {
+  //   color: #fff;
+  //   cursor: pointer;
+  // }
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+  }
+//  &:focus + .anim-btn__overlay
+  &:hover + .anim-btn__overlay
+ {
+    transform: translateY(calc(-100% + 2px));
+  }
+
+  &:active {
+    transform: scale(0.8);
+  }
+
+  &:active + .anim-btn__overlay {
+    transform: translateY(calc(-100% + 2px)) scale(0.8);
+  }
+
+}
+.activebtn{
+  transform:  translateY(calc(-100% + -55px))!important;
+}
+.deactivebtn{
+  transform:  translateY(calc(-100% - -64px))!important;
 }
 .btn {
   border: none;
@@ -107,19 +247,29 @@ a {
 }
 input,
 select {
-  border: none !important;
 
-  box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+  background-color:#F9F9F9;
+  border: 0.5px solid #353e47 !important;
+
 }
 input:focus,
 select:focus {
-  box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
-  outline: none;
+  // box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
+  // outline: 1px solid black;
   border: none;
+  outline: none;
+  border: 0.8px solid #000 !important;
+  box-shadow: none!important;
+  background-color:#F9F9F9;
+
+
+
 }
 label {
+
   font-family: Open Sans;
-  font-size: 14px;
+  font-size: 14px!important;
   font-style: italic;
   font-weight: 400;
   line-height: 8px;
@@ -133,17 +283,20 @@ select {
   height: calc(2.5rem + 2px) !important;
 }
 select {
-  font-family: Open Sans;
-  font-size: 14px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 19px;
-  letter-spacing: 0em;
+  font-family: Open Sans!important;
+  font-size: 14px!important;
+  font-style: italic!important;
+  font-weight: 400!important;
+  line-height: 19px!important;
+  letter-spacing: 0em!important;
   text-align: left;
 }
 .form-control:focuss {
-  box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: none!important;
   outline: none;
+  border-color: none;
+  background-color:#F9F9F9;
+
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -157,6 +310,10 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+.col-lg-3custom{
+  width: 30%;
+
 }
 html,
 body {
@@ -201,6 +358,21 @@ body {
 //  overflow-x: hidden!important;
 // }
 // }
+.alertPbox{
+  // height: 68px;
+width: auto;
+box-shadow: 1px 1px 15px 0px #00000033;
+padding: 25px 22px;
+border-radius: 5px;
+animation:  alertPbox 2s ease-in-out infinite;
+opacity: 0;
+
+}
+@keyframes alertPbox {
+  0%   { transform:translate(0,-10px) ; opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { transform:translate(0,10px) ; opacity: 0; }
+}
 @media screen and (max-width: 360px) {
   .btn {
     button {

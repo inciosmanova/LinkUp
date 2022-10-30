@@ -2,6 +2,10 @@
   padding: 25px 0px 0px 175px;
   overflow: hidden;
   height: 100%;
+  position: relative;
+}
+h1{
+  cursor: auto!important;
 }
 .gender {
   // button {
@@ -156,16 +160,28 @@
   // .cardBox {
   // margin-top: 9rem;
 
-  img {
-    max-width: 138%;
-    width: 153%;
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    // top: 50%;
-    // transform: translateY(-50%);
-  }
+  // img {
+  //   max-width: 138%;
+  //   width: 153%;
+  //   position: absolute;
+  //   bottom: 0px;
+  //   left: 0;
+  //   // top: 50%;
+  //   // transform: translateY(-50%);
   // }
+  // }
+  .cardImg1{
+    position: absolute;
+    left:  0;
+    bottom: 0;
+    width: 79%;
+  }
+  .cardImg2{
+    position: absolute;
+    right:  0;
+    top: 0;
+    width: 55%;
+  }
 }
 @media only screen and (max-width: 982px) {
   .date {
@@ -182,7 +198,7 @@
     text-align: center !important;
   }
   .mycontainer {
-    padding: 110px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     overflow: hidden;
   }
   .center {
@@ -197,9 +213,9 @@
   .alertBox {
     padding: 0px 84px;
   }
-  .right {
-    display: none;
-  }
+  // .right {
+  //   display: none;
+  // }
   .left {
     display: block;
     position: relative;
@@ -226,7 +242,7 @@
 
 @media only screen and (max-width: 727px) {
   .mycontainer {
-    padding: 110px 0px 0px 0px;
+    // padding: 110px 0px 0px 0px;
     overflow: hidden;
   }
   .center {
@@ -261,6 +277,14 @@
       bottom: 70px;
       // top: 50%;
       // transform: translateY(-50%);
+    }
+  }
+}
+@media only screen and (max-width: 1524px) {
+  @media screen and (max-height: 1300px) and (min-height: 700px) {
+    .right {
+      height: 90vh;
+
     }
   }
 }

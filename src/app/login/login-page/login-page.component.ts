@@ -1,3 +1,4 @@
+import { AlertifyService } from './../../_services/alertftJs.service';
 import { SwalAlertService } from './../../_services/swal-alert.service';
 import { LoginObj } from './../../_model/login';
 import { Router } from '@angular/router';
@@ -19,7 +20,8 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private Service: LoginService,
     private router: Router,
-    private alertService: SwalAlertService
+    private alertService: SwalAlertService,
+    private AlertifyService:AlertifyService
   ) { }
   loginForm!: FormGroup
   loginType: boolean = false;
@@ -36,6 +38,7 @@ export class LoginPageComponent implements OnInit {
   }
   SubmitForm() {
     if (this.loginForm.invalid) {
+      this.AlertifyService.error('Xahiş olunur müvafiq sahələri doldurun')
       this.loginType = true
       return;
     } else {
@@ -52,6 +55,8 @@ export class LoginPageComponent implements OnInit {
               this.alertService.SuccesAlert(res.message, 'login/Click.svg');
               return;
             } else {
+      this.AlertifyService.error(res.message)
+
               this.errorMessage = res.message
               // this.alertService.FailAlert(res.message, 'login/fail.svg')
               // console.log(res.message);

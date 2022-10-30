@@ -67,7 +67,8 @@ main {
   }
 }
 .login {
-  background-color: #66bfbf;
+  background: linear-gradient(115.02deg, #314755 -0.78%, #26A0DA 111.59%);
+
   margin-top: 15%;
   padding-bottom: 2%;
 }
@@ -114,6 +115,31 @@ main {
 .reveal.active {
   opacity: 1;
 }
+.loginBox {
+  padding-top: 48px;
+  animation:  fade_move_down 2s ease-in-out infinite;
+  .box{
+    cursor: pointer;
+  }
+  h1 {
+
+
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: rıght;
+    color: #000000;
+
+  }
+}
+
+@keyframes fade_move_down {
+  0%   { transform:translate(0,-10px) ; opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { transform:translate(0,10px) ; opacity: 0; }
+}
 @media only screen and (max-width: 842px) {
   // .colorBtn1 {
   //   justify-content: start !important;
@@ -148,6 +174,9 @@ main {
     img {
       width: 100%;
     }
+  }
+  .designbtn{
+    padding-top: 20px;
   }
 }
 ul {

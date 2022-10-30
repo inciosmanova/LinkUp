@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { Component, ElementRef, HostListener, Inject, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Color } from 'src/app/_model/color';
 import { LoginService } from 'src/app/_services/login.service';
+import { AlertifyService } from './../../_services/alertftJs.service';
 
 @Component({
   selector: 'app-choose-color',
@@ -19,10 +20,13 @@ export class ChooseColorComponent implements OnInit {
   Colors: Color[] = []
   formSubmitAttempt: boolean = false;
   animationType: boolean = false
+  btnType=false;
   constructor(
     private service: LoginService,
     private fb: FormBuilder,
     private router: Router,
+    private viewportScroller: ViewportScroller,
+    private alertifyService:AlertifyService
 
   ) { }
   colorsForm!: FormGroup;
@@ -41,6 +45,8 @@ export class ChooseColorComponent implements OnInit {
   ReyestrSubmit() {
     this.formSubmitAttempt = true
     if (this.colorsForm.invalid) {
+       this.alertifyService.error('Xahiş olunur rənginizi seçəsiniz !')
+
       return;
     } else {
       let colorId
@@ -60,8 +66,31 @@ export class ChooseColorComponent implements OnInit {
       this.Colors = res
     })
   }
+  scrollToElement(): void {
+    this.viewportScroller.scrollToAnchor('login');
 
+  }
+  MouseLeaveButton(){
 
+    let animbtnoverlay = document.getElementById('animbtnoverlay') as HTMLElement;
+    if(this.btnType==false){
+    animbtnoverlay.classList.add("activebtn");
+    this.btnType=true
+    }else{
+    animbtnoverlay.classList.add("deactivebtn");
+    this.btnType=false
+
+    }
+
+  }
+  MouseOverButton(){
+    let animbtnoverlay = document.getElementById('animbtnoverlay') as HTMLElement;
+
+    animbtnoverlay.classList.remove("activebtn");
+    animbtnoverlay.classList.remove("deactivebtn");
+    animbtnoverlay.style.transform = 'translateY(calc(-100% + 2px)'
+
+  }
   ClickColor(typeColor: string) {
 
     let li = document.getElementById('li');

@@ -1,10 +1,17 @@
 .loginPage {
-  padding-top: 10%;
-  padding-bottom: 36px;
-  background-image: url("../../../assets/login/Group\ 36LoginBg.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 76%;
+  position: relative;
+  // padding-top: 10%;
+  // padding-bottom: 36px;
+  // background-image: url("../../../assets/login/Group\ 36LoginBg.svg");
+  // background-repeat: no-repeat;
+  // background-position: right;
+  // background-size: 76%;
+  // height: 50%;
+    //  padding: calc(100%/16);
+    height: 100vh;
+    .customrow{
+      transform: translateY(100%);
+    }
   .colSelect {
     padding-right: 0 !important;
   }
@@ -49,6 +56,28 @@ img {
       font-family: Open Sans;
 
 }
+.forgetpwd{
+font-family: Open Sans;
+font-size: 14px;
+// font-style: italic;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+color: #fff!important;
+text-decoration: none;
+border-bottom: 1px solid #fff;
+
+
+}
+.leftLogin{
+ img{
+  position: absolute;
+  left: 50px;
+  // width: ;
+  bottom: 0;
+ }
+}
 @media only screen and (max-width: 1000px) {
   .loginPage {
     background-image: none;
@@ -62,12 +91,12 @@ img {
   }
 }
 @media only screen and (max-width: 981px) {
-  .leftLogin {
-    display: none;
-  }
-  .rightLogin {
-    display: block;
-  }
+  // .leftLogin {
+  //   display: none;
+  // }
+  // .rightLogin {
+  //   display: block;
+  // }
 }
 @media only screen and (max-width: 1689px) and (min-width: 981px) {
   img {
@@ -77,9 +106,9 @@ img {
     // width: 57px;
     // padding:0;
   }
-  .col-lg-3 {
-    width: 35%;
-  }
+  // .col-lg-3 {
+  //   width: 35%;
+  // }
 }
 @media screen and (max-height: 1200px) and (min-height: 1000px) {
   .selectForm {
@@ -88,6 +117,7 @@ img {
     }
   }
 }
+
 @media only screen and (max-width: 402px) {
   .selectForm {
     select {
@@ -95,6 +125,35 @@ img {
     }
   }
 }
+@media only screen and (max-width: 1294px) {
+ .col-lg-3custom{
+  width: 50%;
+ }
+}
+@media only screen and (max-width: 798px) {
+  .col-lg-3custom{
+   width: 72%;
+  }
+ }
+ @media only screen and (max-width: 550px) {
+  .col-lg-3custom{
+   width: 100%;
+  }
+ }
+ @media only screen and (max-width: 550px) {
+  .col-lg-3custom{
+   width: 100%;
+   padding-left: 1rem!important;
+   padding-right: 1rem!important;
+  }
+ }
+ @media only screen and (max-width: 550px) {
+  .col-lg-3custom{
+   width: 100%;
+   padding-left: 1rem!important;
+   padding-right: 1rem!important;
+  }
+ }
 @media only screen and (max-width: 333px) {
   .loginPage {
     overflow: hidden;
