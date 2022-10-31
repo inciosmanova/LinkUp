@@ -39,12 +39,13 @@
               </div>
             </div>
             <div class="col-11 d-flex forgetpwdbox justify-content-end ">
-              <a  (click)="openDialog()" class="pt-2 pb-1 forgetpwd">Forgot password?</a>
+              <a (click)="openDialog()" class="pt-2 pb-1 forgetpwd">Forgot password?</a>
             </div>
-            <div class="col-11 text-center py-3">
-              <div class="anim-btn-white anim-btn">
-                <button  class="anim-btn__button"  (click)="SubmitForm()">Log in</button>
-                <div id="animbtnoverlay" class="anim-btn__overlay"></div>
+            <div class="col-11 text-center py-3  whiteBtn">
+              <div class="anim-btn">
+                <button class="anim-btn__button" (mouseover)="MouseOverButton()" (mouseleave)="MouseLeaveButton()"
+                  (click)="SubmitForm()">Log in</button>
+                <div id="animbtnoverlaylogin" class="anim-btn__overlay"></div>
               </div>
             </div>
 
@@ -52,16 +53,7 @@
           </div>
         </form>
       </div>
-       <div class="col-lg-3 reveal-item rightLogin">
-        <h1 class="LoginText d-flex justify-content-center">
-          <p class="loginP">
-            LinkUp həyatınızı
-            <br>
-            rəngləndi<span class="red">r</span><span class="blue">i</span><span an class="green">r</span>!
-          </p>
-        </h1>
-        <img src="../../../assets/login/AlertWoman.svg" alt="">
-      </div>
+
       <!-- <div class="col-lg-4">
          <div class="forgetForm"></div>
       </div> -->

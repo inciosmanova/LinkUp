@@ -15,19 +15,41 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  btnType: boolean = false;
 
   constructor(public dialog: MatDialog,
     private fb: FormBuilder,
     private Service: LoginService,
     private router: Router,
     private alertService: SwalAlertService,
-    private AlertifyService:AlertifyService
+    private AlertifyService: AlertifyService
   ) { }
   loginForm!: FormGroup
   loginType: boolean = false;
   errorMessage: string = ''
   ngOnInit(): void {
     this.createForm()
+  }
+  MouseLeaveButton() {
+
+    let animbtnoverlay = document.getElementById('animbtnoverlaylogin') as HTMLElement;
+    if (this.btnType == false) {
+      animbtnoverlay.classList.add("activebtn");
+      this.btnType = true
+    } else {
+      animbtnoverlay.classList.add("deactivebtn");
+      this.btnType = false
+
+    }
+
+  }
+  MouseOverButton() {
+    let animbtnoverlay = document.getElementById('animbtnoverlaylogin') as HTMLElement;
+
+    animbtnoverlay.classList.remove("activebtn");
+    animbtnoverlay.classList.remove("deactivebtn");
+    animbtnoverlay.style.transform = 'translateY(calc(-100% + 2px)'
+
   }
   createForm() {
     this.loginForm = this.fb.group({
@@ -55,7 +77,7 @@ export class LoginPageComponent implements OnInit {
               this.alertService.SuccesAlert(res.message, 'login/Click.svg');
               return;
             } else {
-      this.AlertifyService.error(res.message)
+              this.AlertifyService.error(res.message)
 
               this.errorMessage = res.message
               // this.alertService.FailAlert(res.message, 'login/fail.svg')

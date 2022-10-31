@@ -8,7 +8,7 @@
 <div class="container">
   <section id="color">
     <div class="headText">
-      <pre>
+      <pre class="m-0">
              Hər gün yeni bir başlanğıcdır.
                                 Dərin bir nəfəs al,
                   gülümsə və yenidən başla.
@@ -18,8 +18,10 @@
 
       <div class="all-main text-center">
         <div class="chooseColorDiv">
-          <h1 class="ChooseColor">RƏNGİNİ SEÇ</h1>
-          <img src="../../../assets/login/blackLine.svg" alt="">
+          <video width="320" height="140" autoplay>
+            <source src="../../../assets/login/Rengini sec 4 son.mp4" type="video/mp4">
+          </video>
+
         </div>
         <div class="allColorBox row justify-content-center">
           <!-- <div [className]="blue ? 'col-2 colorBtn p-0 d-flex justify-content-end' : 'none'">
@@ -76,7 +78,8 @@
 
       <div class="designbtn  justify-content-center">
         <div class="anim-btn">
-          <button  class="anim-btn__button" (mouseover)="MouseOverButton()" (mouseleave)="MouseLeaveButton()" (click)="ReyestrSubmit()">I’am
+          <button class="anim-btn__button" (mouseover)="MouseOverButton()" (mouseleave)="MouseLeaveButton()"
+            (click)="ReyestrSubmit()">I’am
             ready</button>
           <div id="animbtnoverlay" class="anim-btn__overlay"></div>
         </div>
@@ -84,11 +87,11 @@
         </h1> -->
 
       </div>
-      <div class="loginBox d-flex justify-content-center" >
-       <div class="box text-center" (click)="scrollToElement()">
-        <h1 class="m-0">LOGIN</h1>
-        <img src="../../../assets/login/arrow_forward_iosarrow.svg" alt="">
-       </div>
+      <div class="loginBox d-flex justify-content-center">
+        <div class="box text-center" (click)="scrollToElement()">
+          <h1 class="m-0">LOGIN</h1>
+          <img src="../../../assets/login/arrow_forward_iosarrow.svg" alt="">
+        </div>
       </div>
     </form>
   </section>
