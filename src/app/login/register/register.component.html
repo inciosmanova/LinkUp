@@ -134,19 +134,21 @@
 
 
           <div class="col-12 centerItem  text-right d-flex justify-content-end btnBox">
-            <div class="btn mt-2 mb-5 m-auto">
+
               <div class="">
                 <!-- {{clicksubmit}} -->
                 <!-- <h1 *ngIf="registrForm.invalid&&clicksubmit" id="alertText" class="alertP alertPbox text-start text-danger">
                   Xahiş olunur xanaları düzgün və tam doldurasınız !
                 </h1> -->
               </div>
+              <div class="anim-btn">
+                <button class="anim-btn__button" (mouseover)="MouseOverButton()" (mouseleave)="MouseLeaveButton()"
+                  (click)="Submit()">Done</button>
+                <div id="animbtnoverlayregister" class="anim-btn__overlay"></div>
+              </div>
 
-              <button class="dartBtn mb-4" (click)="Submit()">Done</button>
 
 
-
-            </div>
 
           </div>
 

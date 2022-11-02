@@ -17,7 +17,7 @@
   }
   .LoginText {
     font-family: Open Sans;
-    font-size: 40px;
+    font-size: 60px;
     font-weight: 400;
     line-height: 60px;
     letter-spacing: 0em;
@@ -68,25 +68,43 @@ img {
   border-bottom: 1px solid #fff;
 }
 .leftLogin {
-  img {
+  width: 100%;
+  // img,h1  {
     position: absolute;
     left: 50px;
     // width: ;
     bottom: 0;
+  // }
+}
+@media only screen and (max-width: 1500px) {
+  .col-lg-3custom{
+    width: 40%;
+  }
+  .leftLogin{
+    img{
+      width: 30%;
+    }
   }
 }
-// @media only screen and (max-width: 1000px) {
-//   .loginPage {
-//     background-image: none;
-//   }
-//   img {
-//     transform: scale(1);
-//   }
-//   .loginForm {
-//     padding-top: 5%;
-//     padding-bottom: 13%;
-//   }
-// }
+@media only screen and (max-width: 1200px) {
+  .col-lg-3custom{
+    width: 60%;
+  }
+  .leftLogin{
+    img{
+      width: 30%;
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  .col-lg-3custom{
+    width: 90%;
+    padding: 0!important;
+  }
+  .leftLogin{
+   display: none;
+  }
+}
 // @media only screen and (max-width: 981px) {
 //   // .leftLogin {
 //   //   display: none;

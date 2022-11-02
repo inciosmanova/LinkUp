@@ -73,6 +73,9 @@ main {
   margin-top: 15%;
   padding-bottom: 2%;
 }
+.heightwidth{
+  height: 100vh;
+}
 .blockBlue {
   flex: 0 0 auto;
   width: 16.66666667%;
@@ -173,6 +176,11 @@ main {
         width: 100%;
       }
     }
+  }
+}
+@media only screen and (max-width: 420px) {
+  video{
+    width: 60%;
   }
 }
 @media only screen and (max-width: 420px) {

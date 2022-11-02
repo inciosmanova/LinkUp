@@ -6,9 +6,10 @@
   <div class="loginPage">
     <div class="row customrow  d-flex justify-content-center">
 
-      <div class="col-lg-3custom  d-flex justify-content-center px-5 loginForm">
+      <div class="col-lg-3custom col-12 d-flex justify-content-center px-5 loginForm">
         <form action="" [formGroup]="loginForm">
           <div class="row justify-content-center">
+
             <div class="col-3 colSelect">
 
               <div class="form-floating mb-3 selectForm">
@@ -41,7 +42,7 @@
             <div class="col-11 d-flex forgetpwdbox justify-content-end ">
               <a (click)="openDialog()" class="pt-2 pb-1 forgetpwd">Forgot password?</a>
             </div>
-            <div class="col-11 text-center py-3  whiteBtn">
+            <div class=" designbtn col-11 text-center py-3  whiteBtn">
               <div class="anim-btn">
                 <button class="anim-btn__button" (mouseover)="MouseOverButton()" (mouseleave)="MouseLeaveButton()"
                   (click)="SubmitForm()">Log in</button>
@@ -58,15 +59,16 @@
          <div class="forgetForm"></div>
       </div> -->
     </div>
-    <div class="reveal-item leftLogin">
-      <h1 class="LoginText ">
+
+    <div class=" leftLogin row">
+      <img src="../../../assets/login/AlertWoman.svg" alt="" class="col-3">
+      <h1 class="LoginText col-4" >
         <p class="loginP">
           LinkUp həyatınızı
           <br>
           rəngləndi<span class="red">r</span><span class="blue">i</span><span an class="green">r</span>!
         </p>
       </h1>
-      <img src="../../../assets/login/AlertWoman.svg" alt="">
     </div>
   </div>
 

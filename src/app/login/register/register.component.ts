@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  btnType: boolean=false;
 
   constructor(private ActivatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -48,7 +49,27 @@ export class RegisterComponent implements OnInit {
       gender: ['', Validators.required],
     })
   }
+  MouseLeaveButton() {
 
+    let animbtnoverlay = document.getElementById('animbtnoverlayregister') as HTMLElement;
+    if (this.btnType == false) {
+      animbtnoverlay.classList.add("activebtn");
+      this.btnType = true
+    } else {
+      animbtnoverlay.classList.add("deactivebtn");
+      this.btnType = false
+
+    }
+
+  }
+  MouseOverButton() {
+    let animbtnoverlay = document.getElementById('animbtnoverlayregister') as HTMLElement;
+
+    animbtnoverlay.classList.remove("activebtn");
+    animbtnoverlay.classList.remove("deactivebtn");
+    animbtnoverlay.style.transform = 'translateY(calc(-100% + 2px)'
+
+  }
   Submit() {
     this.clicksubmit = true
     if (this.registrForm.invalid) {

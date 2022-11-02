@@ -1,6 +1,7 @@
 .mycontainer {
   padding: 25px 0px 0px 115px;
-  // overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
   position: relative;
   height: 80vh;
@@ -143,6 +144,13 @@ h1 {
   }
 }
 @media only screen and (max-width: 1000px) {
+  .anim-btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .right{
+    display: none;
+  }
   .date {
     width: 75.5%;
     input {
