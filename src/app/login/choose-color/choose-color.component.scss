@@ -29,7 +29,7 @@ main {
   // padding-top: 50px;
 
   .chooseColorDiv {
-    height: 8rem;
+    // height: 8rem;
     // .ChooseColor {
     //   font-size: 35px;
     //   font-weight: 400;
@@ -73,7 +73,7 @@ main {
   margin-top: 15%;
   padding-bottom: 2%;
 }
-.heightwidth{
+.heightwidth {
   height: 100vh;
 }
 .blockBlue {
@@ -167,6 +167,11 @@ main {
 }
 
 @media only screen and (max-width: 600px) {
+  .chooseColorDiv {
+    img {
+      width: 50%;
+    }
+  }
   .allColorBox {
     img {
       width: 100%;
@@ -179,7 +184,7 @@ main {
   }
 }
 @media only screen and (max-width: 420px) {
-  video{
+  video {
     width: 60%;
   }
 }

@@ -163,13 +163,13 @@ a {
     color: #fff;
     cursor: pointer;
   }
-  //  &:focus + .anim-btn__overlay
+  &:focus + .anim-btn__overlay,
   &:hover + .anim-btn__overlay {
     transform: translateY(calc(-100% + 2px));
   }
 
   &:active {
-    transform: scale(0.8);
+    // transform: scale(0.8);
   }
 
   &:active + .anim-btn__overlay {
@@ -219,13 +219,13 @@ a {
       color: #353e47;
       cursor: pointer;
     }
-    //  &:focus + .anim-btn__overlay
+    &:focus + .anim-btn__overlay,
     &:hover + .anim-btn__overlay {
       transform: translateY(calc(-100% + 2px));
     }
 
     &:active {
-      transform: scale(0.8);
+      // transform: scale(0.8);
     }
 
     &:active + .anim-btn__overlay {
