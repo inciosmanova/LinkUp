@@ -16,7 +16,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginPageComponent implements OnInit {
   btnType: boolean = false;
-
+  time: any;
+  fisished:boolean=false
   constructor(public dialog: MatDialog,
     private fb: FormBuilder,
     private Service: LoginService,
@@ -53,15 +54,39 @@ export class LoginPageComponent implements OnInit {
   }
   createForm() {
     this.loginForm = this.fb.group({
-      phoneStart: ['051', Validators.required],
+      phoneStart: ['055', Validators.required],
       phoneEnd: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
+  timer(second:any) {
+    // let minute = 1;
+    debugger
+    this.fisished=true
+    let seconds: number = second;
+
+
+    // const prefix = minute < 10 ? "0" : "";
+
+    const timer = setInterval(() => {
+      seconds--;
+
+      this.time = `${second}`;
+      console.log(second);
+
+      if (seconds == 0) {
+       this.fisished=false
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
   SubmitForm() {
     if (this.loginForm.invalid) {
-      this.AlertifyService.error('Xahiş olunur müvafiq sahələri doldurun')
+      if(!this.fisished){this.AlertifyService.error('Xahiş olunur müvafiq sahələri doldurun')
+      this.fisished=true
+      this.timer(10)}
       this.loginType = true
+
       return;
     } else {
       let phone = `${this.loginForm.value.phoneStart}${this.loginForm.value.phoneEnd}`
@@ -74,7 +99,7 @@ export class LoginPageComponent implements OnInit {
           next: res => {
             if (res.isSuccess) {
               this.router.navigate(['/counter'])
-              this.alertService.SuccesAlert(res.message, 'login/Click.svg');
+              // this.alertService.SuccesAlert(res.message, 'login/Click.svg');
               return;
             } else {
               this.AlertifyService.error(res.message)
@@ -103,7 +128,7 @@ export class LoginPageComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(SendCodeComponent, {
-      width: '350px', position: { top: '180px' }
+      width: '600px', position: { top: '180px' }
     });
   }
 

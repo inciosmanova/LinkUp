@@ -25,7 +25,7 @@ export class SendCodeComponent implements OnInit {
 
   createForm() {
     this.forgetpwd = this.fb.group({
-      phoneStart: ['051', Validators.required],
+      phoneStart: ['055', Validators.required],
       phoneEnd: ['', Validators.required]
     })
   }
@@ -42,7 +42,7 @@ export class SendCodeComponent implements OnInit {
     } else {
       this.service.ForgetPassword(phoneform).subscribe({
         next: res => {
-          this.router.navigate(['/choose-color/forgetPassword'])
+          this.router.navigate(['/choose-color/forgetPassword'], { state: { example: phoneform } })
           this.dialogRef.close()
         },
         error: error => {

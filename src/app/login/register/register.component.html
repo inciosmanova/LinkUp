@@ -1,4 +1,4 @@
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+<ngx-spinner bdColor="transparent" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
 
@@ -17,12 +17,13 @@
               <div class="col-3">
                 <div class="form-floating mb-3">
                   <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
-                    <option value="051">051</option>
+                    <option value="055" selected>055</option>
                     <option value="050">050</option>
+                    <option value="051" >051</option>
                     <option value="070">070</option>
                     <option value="077">077</option>
-                    <option value="055">055</option>
                     <option value="099">099</option>
+                    <option value="010">010</option>
                   </select>
                 </div>
               </div>
@@ -81,17 +82,17 @@
             <div class="col-lg-6 ">
               <div class="col-12 row date m-auto">
                 <div class="col-4 form-floating ">
-                  <input type="text" class="form-control " id="Day" placeholder="Day" formControlName="day"
-                    maxlength="2">
+                  <input type="text" name="day" class="form-control " id="Day" placeholder="Day" formControlName="day"
+                    maxlength="2" [libAutoTab]="'month'">
                   <label for="Day">Day</label>
                 </div>
                 <div class="form-floating col-4">
-                  <input type="text" class="form-control " id="Month" placeholder="Month" formControlName="month"
-                    maxlength="2">
+                  <input  type="text" name="month" class="form-control " id="month" placeholder="Month" formControlName="month"
+                    maxlength="2" [libAutoTab]="'Year'">
                   <label for="Month">Month </label>
                 </div>
                 <div class="form-floating col-4">
-                  <input type="text" class="form-control " id="Year" placeholder="Year" formControlName="year">
+                  <input type="text" class="form-control " id="Year" name="Year" maxlength="4" placeholder="Year" formControlName="year">
                   <label for="Year">Year </label>
                 </div>
                 <p class="Lbltext text-center">Date of birth</p>

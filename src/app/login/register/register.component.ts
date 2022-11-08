@@ -28,17 +28,33 @@ export class RegisterComponent implements OnInit {
   registrForm!: FormGroup;
   colorId: string = ''
   clicksubmit: boolean = false
+  time: any;
+  fisished:boolean=false
+
   ngOnInit(): void {
     this.ActivatedRoute.queryParams.subscribe((params) => {
       this.colorId = params['colorId']
     });
     this.createForm()
   }
+  onDigitInput(event:any,type:number){
+    let element;
+    if (event.code !== 'Backspace')
+    element = event.srcElement.nextElementSibling;
+
+if (event.code === 'Backspace')
+    element = event.srcElement.previousElementSibling;
+
+if(element == null)
+    return;
+else
+    element.focus();
+  }
   createForm() {
     this.registrForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      phoneStart: ['051', Validators.required],
+      phoneStart: ['055', Validators.required],
       phoneNumber: ['', Validators.required],
       colorId: [this.colorId || '', Validators.required],
       password: ['', [Validators.required, PasswordStrengthValidator]],
@@ -62,6 +78,27 @@ export class RegisterComponent implements OnInit {
     }
 
   }
+  timer(second:any) {
+    // let minute = 1;
+    debugger
+    this.fisished=true
+    let seconds: number = second;
+
+
+    // const prefix = minute < 10 ? "0" : "";
+
+    const timer = setInterval(() => {
+      seconds--;
+
+      this.time = `${second}`;
+      console.log(second);
+
+      if (seconds == 0) {
+       this.fisished=false
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
   MouseOverButton() {
     let animbtnoverlay = document.getElementById('animbtnoverlayregister') as HTMLElement;
 
@@ -73,9 +110,14 @@ export class RegisterComponent implements OnInit {
   Submit() {
     this.clicksubmit = true
     if (this.registrForm.invalid) {
+      debugger
       // this.alertifyService.set('notifier','position', 'bottom-left');
+      if(!this.fisished){ this.alertifyService.error('Xahiş olunur xanaları düzgün və tam doldurasınız!')
+      this.fisished=true
+      this.timer(10)
 
-       this.alertifyService.error('Xahiş olunur xanaları düzgün və tam doldurasınız!')
+    }
+
       return;
     } else {
       debugger
@@ -95,7 +137,7 @@ export class RegisterComponent implements OnInit {
       this.service.Registration(postForm).subscribe(result => {
         if (result.isSuccess) {
           this.router.navigate(['/register/register-code']);
-          this.alertservice.SuccesAlert(result.message, 'login/Click.svg')
+          // this.alertservice.SuccesAlert(result.message, 'login/Click.svg')/
         } else {
           this.alertservice.FailAlert(result.message, 'login/fail.svg')
         }

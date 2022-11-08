@@ -1,3 +1,4 @@
+import { AutoTabDirective } from './../_directive/auto-tap.directive';
 import { LoadingInterceptor } from 'src/_interceptor/loading.interceptor';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
@@ -32,7 +33,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ForgetPasswordComponent,
     RegisterComponent,
     RegisterCodeComponent,
-    CounterComponent
+    CounterComponent,
+    AutoTabDirective
+
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,4 @@
+
 import { RoleGuard } from './login/Role.guard';
 import { LoginGuard } from './login/login.guard';
 import { MainModule } from './main/main.module';
@@ -15,6 +16,7 @@ import { UnAuthorizedInterceptor } from 'src/environments/un-authorized.intercep
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,

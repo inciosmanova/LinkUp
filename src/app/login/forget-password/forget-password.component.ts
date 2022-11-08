@@ -15,16 +15,61 @@ export class ForgetPasswordComponent implements OnInit {
   optCodeType: string = '';
   message: string = ''
   clicksubmit: boolean = false
+  display: any;
+  phoneform:any
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
     private router: Router,
     private alertService: SwalAlertService
-  ) { }
+  ) {
+    console.log(this.router.getCurrentNavigation()?.extras.state);
+
+    this.phoneform = this.router.getCurrentNavigation()?.extras.state
+   }
   PasswordConformForm!: FormGroup
 
   ngOnInit(): void {
     this.createForm()
+    this.timer(2)
+  }
+  ReSendSms(){
+    debugger
+    this.service.ForgetPassword(this.phoneform.example).subscribe({
+      next: res => {
+        this.timer(2)
+      },
+      error: error => {
+        // console.log(error);
+        this.message = error.error.message
+        return
+      }
+    })
+  }
+  timer(minute:any) {
+    // let minute = 1;
+    let seconds: number = minute * 60;
+    let textSec: any = "0";
+    let statSec: number = 60;
+
+    const prefix = minute < 10 ? "0" : "";
+
+    const timer = setInterval(() => {
+      seconds--;
+      if (statSec != 0) statSec--;
+      else statSec = 59;
+
+      if (statSec < 10) {
+        textSec = "0" + statSec;
+      } else textSec = statSec;
+
+      this.display = `${prefix}${Math.floor(seconds / 60)}:${textSec}`;
+
+      if (seconds == 0) {
+        console.log("finished");
+        clearInterval(timer);
+      }
+    }, 1000);
   }
   createForm() {
     this.PasswordConformForm = this.fb.group({

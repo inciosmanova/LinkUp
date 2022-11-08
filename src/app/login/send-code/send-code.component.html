@@ -1,21 +1,29 @@
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+<ngx-spinner bdColor="transparent" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
 <div class="col-12 d-flex justify-content-end button pt-1 px-1" mat-dialog-close>
   <img src="../../../assets/login/Close.svg" alt="">
 </div>
 <div class=" sendSms">
+  <h1 class="sendHeader">
+    Forget password?
+  </h1>
+  <hr>
+  <p class="sendP py-2">
+    Aşağıdakı xanaya daxil etdiyiniz nömrəyə təsdiq kodu göndəriləcək.
+  </p>
   <form action="" [formGroup]="forgetpwd">
     <div class="row">
       <div class="col-3 ">
         <div class="form-floating mb-2">
           <select class="form-select py-0" aria-label="Default select example" formControlName="phoneStart">
-            <option value="051" selected>051</option>
+            <option value="055" selected>055</option>
             <option value="050">050</option>
+            <option value="051" >051</option>
             <option value="070">070</option>
             <option value="077">077</option>
-            <option value="055">055</option>
             <option value="099">099</option>
+            <option value="010">010</option>
           </select>
         </div>
       </div>
