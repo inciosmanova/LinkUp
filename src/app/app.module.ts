@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from 'src/_interceptor/loading.interceptor';
 import { UnAuthorizedInterceptor } from 'src/environments/un-authorized.interceptor';
+import { CorsInterceptor } from 'src/_interceptor/cors.interceptors';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,11 @@ import { UnAuthorizedInterceptor } from 'src/environments/un-authorized.intercep
   ],
   providers: [
     LoginGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true
+    },
     RoleGuard
     ,
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },

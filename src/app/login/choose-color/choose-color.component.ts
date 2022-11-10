@@ -20,13 +20,15 @@ export class ChooseColorComponent implements OnInit {
   Colors: Color[] = []
   formSubmitAttempt: boolean = false;
   animationType: boolean = false
-  btnType=false;
+  btnType = false;
+  fisished!: boolean;
+  time: any;
   constructor(
     private service: LoginService,
     private fb: FormBuilder,
     private router: Router,
     private viewportScroller: ViewportScroller,
-    private alertifyService:AlertifyService
+    private alertifyService: AlertifyService
 
   ) { }
   colorsForm!: FormGroup;
@@ -42,11 +44,36 @@ export class ChooseColorComponent implements OnInit {
       colorId: ['', Validators.required],
     })
   }
+  timer(second: any) {
+    // let minute = 1;
+    debugger
+    this.fisished = true
+    let seconds: number = second;
+
+
+    // const prefix = minute < 10 ? "0" : "";
+
+    const timer = setInterval(() => {
+      seconds--;
+
+      this.time = `${second}`;
+      console.log(second);
+
+      if (seconds == 0) {
+        this.fisished = false
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
   ReyestrSubmit() {
     this.formSubmitAttempt = true
     if (this.colorsForm.invalid) {
-       this.alertifyService.error('Xahiş olunur rənginizi seçəsiniz !')
+      if (!this.fisished) {
+        this.alertifyService.error('Xahiş olunur rənginizi seçəsiniz !')
+        this.fisished = true
+        this.timer(10)
 
+      }
       return;
     } else {
       let colorId
@@ -62,6 +89,7 @@ export class ChooseColorComponent implements OnInit {
     // this.colorId == '' ? console.log('Bos') : console.log(form)
   }
   GetColors() {
+    debugger
     this.service.GetColors().subscribe(res => {
       this.Colors = res
     })
@@ -70,20 +98,20 @@ export class ChooseColorComponent implements OnInit {
     this.viewportScroller.scrollToAnchor('login');
 
   }
-  MouseLeaveButton(){
+  MouseLeaveButton() {
 
     let animbtnoverlay = document.getElementById('animbtnoverlay') as HTMLElement;
-    if(this.btnType==false){
-    animbtnoverlay.classList.add("activebtn");
-    this.btnType=true
-    }else{
-    animbtnoverlay.classList.add("deactivebtn");
-    this.btnType=false
+    if (this.btnType == false) {
+      animbtnoverlay.classList.add("activebtn");
+      this.btnType = true
+    } else {
+      animbtnoverlay.classList.add("deactivebtn");
+      this.btnType = false
 
     }
 
   }
-  MouseOverButton(){
+  MouseOverButton() {
     let animbtnoverlay = document.getElementById('animbtnoverlay') as HTMLElement;
 
     animbtnoverlay.classList.remove("activebtn");
