@@ -20,6 +20,7 @@ import { CounterComponent } from './counter/counter.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxCaptchaModule
   ],
   providers: [
 

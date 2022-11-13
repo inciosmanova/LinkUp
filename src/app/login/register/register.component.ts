@@ -3,11 +3,12 @@ import { SwalAlertService } from './../../_services/swal-alert.service';
 import { PasswordStrengthValidator } from './../PasswordStrengthValidator';
 import { Registeruser } from './../../_model/registeruser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/_services/login.service';
 import Swal from 'sweetalert2';
+import { ReCaptcha2Component } from 'ngx-captcha';
 
 
 @Component({
@@ -17,6 +18,23 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent implements OnInit {
   btnType: boolean=false;
+  @ViewChild('langInput') langInput!: ElementRef;
+   public captchaIsLoaded = false;
+   public captchaSuccess = false;
+   public captchaIsExpired = false;
+   public captchaResponse?: string;
+   public theme: 'light' | 'dark' = 'light';
+   public size: 'compact' | 'normal' = 'normal';
+   public lang = 'en';
+   public type!: 'image' | 'audio' ;
+   registrForm!: FormGroup;
+   colorId: string = ''
+   clicksubmit: boolean = false
+   time: any;
+   fisished:boolean=false
+   RecaptchaToken:any=''
+  protected aFormGroup!: FormGroup;
+
 
   constructor(private ActivatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -25,17 +43,16 @@ export class RegisterComponent implements OnInit {
     private alertservice: SwalAlertService,
     private alertifyService:AlertifyService) {
   }
-  registrForm!: FormGroup;
-  colorId: string = ''
-  clicksubmit: boolean = false
-  time: any;
-  fisished:boolean=false
+
 
   ngOnInit(): void {
     this.ActivatedRoute.queryParams.subscribe((params) => {
       this.colorId = params['colorId']
     });
     this.createForm()
+  }
+  handleSuccess(data:any) {
+     this.RecaptchaToken=data
   }
   onDigitInput(event:any,type:number){
     let element;
@@ -117,8 +134,10 @@ else
       this.timer(10)
 
     }
-
       return;
+    }else if(this.RecaptchaToken=''){
+      return
+
     } else {
       debugger
       const phoneNumber = `${this.registrForm.value.phoneStart}${this.registrForm.value.phoneNumber}`
@@ -134,7 +153,7 @@ else
         dateOfBirth: dateOfBirth,
         gender: gender
       }
-      this.service.Registration(postForm).subscribe(result => {
+      this.service.Registration(postForm,this.RecaptchaToken).subscribe(result => {
         if (result.isSuccess) {
           this.router.navigate(['/register/register-code']);
           // this.alertservice.SuccesAlert(result.message, 'login/Click.svg')/
@@ -148,5 +167,6 @@ else
 
 
   }
+
 
 }

@@ -115,7 +115,16 @@ main {
   opacity: 0;
   transition: all linear 0.5s;
 }
+li{
+  transition: all linear 0.5s;
 
+}
+.colorBtn1,
+  .colorBtn2,
+  .colorBtn3 {
+  transition: all linear 0.5s;
+
+  }
 .reveal.active {
   opacity: 1;
 }
@@ -163,6 +172,8 @@ main {
   .colorBtn2,
   .colorBtn3 {
     width: 33% !important;
+  transition: all linear 0.5s;
+
   }
 }
 

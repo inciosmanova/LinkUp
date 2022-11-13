@@ -24,6 +24,7 @@
     "alertifyjs": "^1.13.1",
     "bootstrap": "^5.2.2",
     "gsap": "^3.11.3",
+    "ngx-captcha": "^12.0.2",
     "ngx-spinner": "^14.0.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.5.1",

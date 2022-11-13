@@ -2,8 +2,10 @@ import { SwalAlertService } from './../../_services/swal-alert.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_services/login.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PasswordStrengthValidator } from '../PasswordStrengthValidator';
+import { ReCaptcha2Component } from 'ngx-captcha';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,19 +19,39 @@ export class ForgetPasswordComponent implements OnInit {
   clicksubmit: boolean = false
   display: any;
   phoneform:any
+  typeResendBtn:boolean=true
+  RecaptcaData:any=''
+  protected aFormGroup!: FormGroup;
+  // @ViewChild('captchaElem') captchaElem!: ReCaptcha2Component;
+   @ViewChild('langInput') langInput!: ElementRef;
+   public captchaIsLoaded = false;
+   public captchaSuccess = false;
+   public captchaIsExpired = false;
+   public captchaResponse?: string;
+   public theme: 'light' | 'dark' = 'light';
+   public size: 'compact' | 'normal' = 'normal';
+   public lang = 'en';
+   public type!: 'image' | 'audio' ;
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
     private router: Router,
-    private alertService: SwalAlertService
+    private alertService: SwalAlertService,
+    private formBuilder: FormBuilder
   ) {
-    console.log(this.router.getCurrentNavigation()?.extras.state);
+
 
     this.phoneform = this.router.getCurrentNavigation()?.extras.state
    }
   PasswordConformForm!: FormGroup
 
+  handleSuccess(data:any) {
+   this.RecaptcaData=data
+  }
   ngOnInit(): void {
+    this.aFormGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
     this.createForm()
     this.timer(2)
   }
@@ -38,6 +60,7 @@ export class ForgetPasswordComponent implements OnInit {
     this.service.ForgetPassword(this.phoneform.example).subscribe({
       next: res => {
         this.timer(2)
+        this.typeResendBtn=false
       },
       error: error => {
         // console.log(error);
@@ -68,6 +91,7 @@ export class ForgetPasswordComponent implements OnInit {
       if (seconds == 0) {
         console.log("finished");
         clearInterval(timer);
+        this.typeResendBtn=true
       }
     }, 1000);
   }
@@ -86,7 +110,7 @@ export class ForgetPasswordComponent implements OnInit {
     if (otpCode.length == 6) {
       debugger
 
-      this.service.RegisterCode(form).subscribe({
+      this.service.CheckOtp(form).subscribe({
         next: res => {
           this.optCodeType = 'true'
           console.log(res);
@@ -106,12 +130,14 @@ export class ForgetPasswordComponent implements OnInit {
     this.clicksubmit = true
     if (this.PasswordConformForm.invalid) {
       return;
-    } {
+    }if(this.RecaptcaData==''){
+    return}
+    else {
       const form = {
         otp: this.PasswordConformForm.value.otp,
         newPassword: this.PasswordConformForm.value.newpassword
       }
-      this.service.ForgetPasswordConfirm(form).subscribe({
+      this.service.ForgetPasswordConfirm(form,this.RecaptcaData).subscribe({
         next: res => {
           this.router.navigate(['/choose-color'])
           this.alertService.SuccesAlert(res.message, 'login/Click.svg')

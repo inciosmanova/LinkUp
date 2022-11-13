@@ -2,7 +2,7 @@ import { LoginObj, LoginResponse, ForgetPwd } from './../_model/login';
 import { ResultRegister, RegisterCode } from './../_model/registeruser';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { Color } from '../_model/color';
 import { Registeruser } from '../_model/registeruser';
@@ -13,14 +13,17 @@ import { Registeruser } from '../_model/registeruser';
 export class LoginService {
   baseUrl = environment.baseUrl
   constructor(private http: HttpClient) { }
+
   GetColors() {
     return this.http.get<Color[]>(this.baseUrl + 'Home/getcolors')
   }
-  Registration(postForm: Registeruser) {
-    return this.http.post<ResultRegister>(this.baseUrl + 'User/registeruser', postForm)
+  Registration(postForm: Registeruser,token:any) {
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/registeruser', postForm,{headers: {
+      "encodedResponse": token
+  }})
   }
 
-  RegisterCode(optCode: RegisterCode) {
+  RegisterCode(optCode: RegisterCode,token?:any) {
     return this.http.post<ResultRegister>(this.baseUrl + 'User/verifysms', optCode).pipe(
       map((Response: LoginResponse) => {
         debugger
@@ -32,6 +35,9 @@ export class LoginService {
         return Response;
       })
     )
+  }
+  CheckOtp(optCode: RegisterCode) {
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/checkOtpCode', optCode)
   }
   LoginUser(loginForm: LoginObj) {
     debugger
@@ -71,8 +77,10 @@ export class LoginService {
     return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpassword', phone)
 
   }
-  ForgetPasswordConfirm(form: ForgetPwd) {
-    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpasswordconfirm', form)
+  ForgetPasswordConfirm(form: ForgetPwd,token:any) {
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpasswordconfirm', form,{headers: {
+      "encodedResponse": token
+  }})
 
   }
 
