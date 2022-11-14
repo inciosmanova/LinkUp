@@ -73,14 +73,14 @@ export class LoginService {
   logOut() {
     localStorage.removeItem("Linkuptoken")
   }
-  ForgetPassword(phone: { phonenumber: string }) {
-    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpassword', phone)
-
-  }
-  ForgetPasswordConfirm(form: ForgetPwd,token:any) {
-    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpasswordconfirm', form,{headers: {
+  ForgetPassword(phone: { phonenumber: string },token?:any) {
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpassword', phone,{headers: {
       "encodedResponse": token
   }})
+
+  }
+  ForgetPasswordConfirm(form: ForgetPwd) {
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpasswordconfirm', form)
 
   }
 

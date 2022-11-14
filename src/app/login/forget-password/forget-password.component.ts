@@ -20,18 +20,9 @@ export class ForgetPasswordComponent implements OnInit {
   display: any;
   phoneform:any
   typeResendBtn:boolean=true
-  RecaptcaData:any=''
-  protected aFormGroup!: FormGroup;
+
   // @ViewChild('captchaElem') captchaElem!: ReCaptcha2Component;
-   @ViewChild('langInput') langInput!: ElementRef;
-   public captchaIsLoaded = false;
-   public captchaSuccess = false;
-   public captchaIsExpired = false;
-   public captchaResponse?: string;
-   public theme: 'light' | 'dark' = 'light';
-   public size: 'compact' | 'normal' = 'normal';
-   public lang = 'en';
-   public type!: 'image' | 'audio' ;
+
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
@@ -45,18 +36,13 @@ export class ForgetPasswordComponent implements OnInit {
    }
   PasswordConformForm!: FormGroup
 
-  handleSuccess(data:any) {
-   this.RecaptcaData=data
-  }
+
   ngOnInit(): void {
-    this.aFormGroup = this.formBuilder.group({
-      recaptcha: ['', Validators.required]
-    });
+
     this.createForm()
     this.timer(2)
   }
   ReSendSms(){
-    debugger
     this.service.ForgetPassword(this.phoneform.example).subscribe({
       next: res => {
         this.timer(2)
@@ -130,14 +116,13 @@ export class ForgetPasswordComponent implements OnInit {
     this.clicksubmit = true
     if (this.PasswordConformForm.invalid) {
       return;
-    }if(this.RecaptcaData==''){
-    return}
+    }
     else {
       const form = {
         otp: this.PasswordConformForm.value.otp,
         newPassword: this.PasswordConformForm.value.newpassword
       }
-      this.service.ForgetPasswordConfirm(form,this.RecaptcaData).subscribe({
+      this.service.ForgetPasswordConfirm(form).subscribe({
         next: res => {
           this.router.navigate(['/choose-color'])
           this.alertService.SuccesAlert(res.message, 'login/Click.svg')

@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/_services/login.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,24 @@ export class SendCodeComponent implements OnInit {
   formType: boolean = false
   message: string = ''
   forgetpwd!: FormGroup
+  RecaptcaData:any=''
+  protected aFormGroup!: FormGroup;
+  @ViewChild('langInput') langInput!: ElementRef;
+  public captchaIsLoaded = false;
+  public captchaSuccess = false;
+  public captchaIsExpired = false;
+  public captchaResponse?: string;
+  public theme: 'light' | 'dark' = 'light';
+  public size: 'compact' | 'normal' = 'normal';
+  public lang = 'en';
+  public type!: 'image' | 'audio' ;
+  handleSuccess(data:any) {
+    this.RecaptcaData=data
+   }
   ngOnInit(): void {
+    this.aFormGroup = this.fb.group({
+      recaptcha: ['', Validators.required]
+    });
     this.createForm()
   }
 
@@ -39,8 +56,9 @@ export class SendCodeComponent implements OnInit {
     if (this.forgetpwd.invalid) {
       this.formType = true;
       return
-    } else {
-      this.service.ForgetPassword(phoneform).subscribe({
+    }if(this.RecaptcaData==''){
+      return} else {
+      this.service.ForgetPassword(phoneform,this.RecaptcaData).subscribe({
         next: res => {
           this.router.navigate(['/choose-color/forgetPassword'], { state: { example: phoneform } })
           this.dialogRef.close()

@@ -35,6 +35,19 @@
           <label for="floatingNumber">Mobil number </label>
         </div>
       </div>
+      <div class="col-12">
+            <form [formGroup]="aFormGroup" class="d-flex justify-content-center p-3">
+        <ngx-recaptcha2 #captchaElem siteKey="6LceAwEjAAAAAF_2xvsRAwH4I7YY_AGAip5VhYmT"
+         (success)="handleSuccess($event)"
+
+         [size]="size"
+         [hl]="lang"
+          [theme]="theme"
+           [type]="type"
+            formControlName="recaptcha">
+        </ngx-recaptcha2>
+      </form>
+    </div>
       <div class="col-12 text-center">
         <div class="btn">
           <button type="submit" (click)="SendSms()" class="dartBtn">Send SMS</button>
