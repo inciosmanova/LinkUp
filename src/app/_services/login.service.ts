@@ -17,13 +17,18 @@ export class LoginService {
   GetColors() {
     return this.http.get<Color[]>(this.baseUrl + 'Home/getcolors')
   }
-  Registration(postForm: Registeruser,token:any) {
-    return this.http.post<ResultRegister>(this.baseUrl + 'User/registeruser', postForm,{headers: {
-      "encodedResponse": token
-  }})
+  Registration(postForm: Registeruser, token: any) {
+    debugger
+    console.log(token, 'Registration');
+
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/registeruser', postForm, {
+      headers: {
+        "encodedResponse": token
+      }
+    })
   }
 
-  RegisterCode(optCode: RegisterCode,token?:any) {
+  RegisterCode(optCode: RegisterCode, token?: any) {
     return this.http.post<ResultRegister>(this.baseUrl + 'User/verifysms', optCode).pipe(
       map((Response: LoginResponse) => {
         debugger
@@ -73,10 +78,13 @@ export class LoginService {
   logOut() {
     localStorage.removeItem("Linkuptoken")
   }
-  ForgetPassword(phone: { phonenumber: string },token?:any) {
-    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpassword', phone,{headers: {
-      "encodedResponse": token
-  }})
+  ForgetPassword(phone: { phonenumber: string }, token?: any) {
+    debugger
+    return this.http.post<ResultRegister>(this.baseUrl + 'User/forgotpassword', phone, {
+      headers: {
+        "encodedResponse": token
+      }
+    })
 
   }
   ForgetPasswordConfirm(form: ForgetPwd) {

@@ -17,22 +17,22 @@ import { ReCaptcha2Component } from 'ngx-captcha';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  btnType: boolean=false;
+  btnType: boolean = false;
   @ViewChild('langInput') langInput!: ElementRef;
-   public captchaIsLoaded = false;
-   public captchaSuccess = false;
-   public captchaIsExpired = false;
-   public captchaResponse?: string;
-   public theme: 'light' | 'dark' = 'light';
-   public size: 'compact' | 'normal' = 'normal';
-   public lang = 'en';
-   public type!: 'image' | 'audio' ;
-   registrForm!: FormGroup;
-   colorId: string = ''
-   clicksubmit: boolean = false
-   time: any;
-   fisished:boolean=false
-   RecaptchaToken:any=''
+  public captchaIsLoaded = false;
+  public captchaSuccess = false;
+  public captchaIsExpired = false;
+  public captchaResponse?: string;
+  public theme: 'light' | 'dark' = 'light';
+  public size: 'compact' | 'normal' = 'normal';
+  public lang = 'en';
+  public type!: 'image' | 'audio';
+  registrForm!: FormGroup;
+  colorId: string = ''
+  clicksubmit: boolean = false
+  time: any;
+  fisished: boolean = false
+  RecaptchaToken: any = ''
   protected aFormGroup!: FormGroup;
 
 
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private service: LoginService,
     private alertservice: SwalAlertService,
-    private alertifyService:AlertifyService) {
+    private alertifyService: AlertifyService) {
   }
 
 
@@ -51,21 +51,22 @@ export class RegisterComponent implements OnInit {
     });
     this.createForm()
   }
-  handleSuccess(data:any) {
-     this.RecaptchaToken=data
+  handleSuccess(data: any) {
+    this.RecaptchaToken = data
+
   }
-  onDigitInput(event:any,type:number){
+  onDigitInput(event: any, type: number) {
     let element;
     if (event.code !== 'Backspace')
-    element = event.srcElement.nextElementSibling;
+      element = event.srcElement.nextElementSibling;
 
-if (event.code === 'Backspace')
-    element = event.srcElement.previousElementSibling;
+    if (event.code === 'Backspace')
+      element = event.srcElement.previousElementSibling;
 
-if(element == null)
-    return;
-else
-    element.focus();
+    if (element == null)
+      return;
+    else
+      element.focus();
   }
   createForm() {
     this.registrForm = this.fb.group({
@@ -95,10 +96,10 @@ else
     }
 
   }
-  timer(second:any) {
+  timer(second: any) {
     // let minute = 1;
     debugger
-    this.fisished=true
+    this.fisished = true
     let seconds: number = second;
 
 
@@ -111,7 +112,7 @@ else
       console.log(second);
 
       if (seconds == 0) {
-       this.fisished=false
+        this.fisished = false
         clearInterval(timer);
       }
     }, 1000);
@@ -125,17 +126,20 @@ else
 
   }
   Submit() {
+    console.log(this.RecaptchaToken, 'submit');
+
     this.clicksubmit = true
     if (this.registrForm.invalid) {
       debugger
       // this.alertifyService.set('notifier','position', 'bottom-left');
-      if(!this.fisished){ this.alertifyService.error('Xahiş olunur xanaları düzgün və tam doldurasınız!')
-      this.fisished=true
-      this.timer(10)
+      if (!this.fisished) {
+        this.alertifyService.error('Xahiş olunur xanaları düzgün və tam doldurasınız!')
+        this.fisished = true
+        this.timer(10)
 
-    }
+      }
       return;
-    }else if(this.RecaptchaToken=''){
+    } else if (this.RecaptchaToken == '') {
       return
 
     } else {
@@ -153,7 +157,7 @@ else
         dateOfBirth: dateOfBirth,
         gender: gender
       }
-      this.service.Registration(postForm,this.RecaptchaToken).subscribe(result => {
+      this.service.Registration(postForm, this.RecaptchaToken).subscribe(result => {
         if (result.isSuccess) {
           this.router.navigate(['/register/register-code']);
           // this.alertservice.SuccesAlert(result.message, 'login/Click.svg')/
